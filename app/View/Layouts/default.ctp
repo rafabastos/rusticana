@@ -28,7 +28,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css('bootstrap-reboot.min');
+		echo $this->Html->css('bootstrap-grid.min');
+		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('style');
+		echo $this->Html->script('bootstrap.min');
+		echo $this->Html->script('bootstrap.bundle.min');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
