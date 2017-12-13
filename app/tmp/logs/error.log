@@ -727,3 +727,273 @@ Request URL: /rusticana/js/bootstrap.min.js.map
 Stack Trace:
 #0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2017-12-13 09:26:34 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-reboot.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:26:34 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-grid.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:26:34 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:26:34 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:26:34 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.bundle.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:31:39 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-reboot.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:31:39 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-grid.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:31:39 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:31:39 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:31:39 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.bundle.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:32:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-reboot.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:32:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-grid.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:32:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:32:09 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:32:09 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.bundle.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:24 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-reboot.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:24 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-grid.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:24 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:24 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:24 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.bundle.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-reboot.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-grid.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:54 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:36:54 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.bundle.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:56:26 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-grid.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:56:26 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap-reboot.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:56:26 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/css/bootstrap.min.css.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:56:26 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2017-12-13 09:56:26 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /rusticana/js/bootstrap.bundle.min.js.map
+Stack Trace:
+#0 /var/www/html/rusticana/app/webroot/index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
