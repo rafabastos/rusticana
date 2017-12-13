@@ -28,12 +28,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('bootstrap-reboot.min');
-		echo $this->Html->css('bootstrap-grid.min');
-		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('bootstrap/bootstrap-reboot.min');
+		echo $this->Html->css('bootstrap/bootstrap-grid.min');
+		echo $this->Html->css('bootstrap/bootstrap.min');
 		echo $this->Html->css('style');
-		echo $this->Html->script('bootstrap.min');
-		echo $this->Html->script('bootstrap.bundle.min');
+		
+		echo $this->Html->script('libs/jquery-2.0.2.min');
+		echo $this->Html->script('libs/jquery-2.1.4.min');
+		echo $this->Html->script('libs/jquery-ui-1.10.3.min');
+		echo $this->Html->script('libs/jquery-ui-1.11.4.min');
+		echo $this->Html->script('bootstrap/bootstrap.min');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
