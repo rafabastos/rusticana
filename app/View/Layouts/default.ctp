@@ -33,34 +33,34 @@
 
 		<header id="header">
 			<div id="logo-group">
-				<span id="logo"><img width="600" src="../app/webroot/img/logo.png"></span>
+				<span id="logo"><?php echo $this->Html->image('logo.png',array('alt'=>'SmartAdmin')); ?> </span>
 			</div>
 		</header>
 
 		<aside id="left-panel">
 			<nav>
 				<ul>
-					<li class="pagesdisplay">
+					<li class="">
 						<?php echo $this->Html->link('<i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Inicio</span>', ['controller'=> 'pages','action'=>'home'],['escape'=>false]); ?>
 					</li>
 					<li>
-						<a href="#"> <i class="fa fa-lg fa-fw fa-group"></i><span class="menu-item-parent">Clientes</span></a>
+						<a href="#"> <i class="fa fa-lg fa-fw fa-cutlery"></i><span class="menu-item-parent">Productos</span></a>
 						<ul>
-							<li class="clientesindex">
-								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'clientes','action'=>'index'],['escape'=>false]); ?>
+							<li class="">
+								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i>Lista', ['controller'=> 'productos','action'=>'index'],['escape'=>false]); ?>
 							</li>	
-							<li class="clientesnuevo">
-								<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'clientes','action'=>'nuevo'],['escape'=>false]); ?>
+							<li class="">
+								<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i>Nuevo', ['controller'=> 'productos','action'=>'nuevo'],['escape'=>false]); ?>
 							</li>	
 						</ul>
 					</li>
 					<li>
 						<a href="#"> <i class="fa fa-lg fa-fw fa-truck"></i><span class="menu-item-parent">Proveedores</span></a>
 						<ul>
-							<li class="clienteslistarproveedores">
+							<li class="">
 								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'clientes','action'=>'listarProveedores'],['escape'=>false]); ?>
 							</li>
-							<li class="clientesnuevo">
+							<li class="">
 								<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'clientes','action'=>'nuevo'],['escape'=>false]); ?>
 							</li>	
 						</ul>
@@ -77,7 +77,7 @@
 
 		<!-- MAIN PANEL -->
 		<div id="main" role="main">
-
+<?php echo $this->fetch('content'); ?>
 		</div>
 
 		<!-- PAGE FOOTER -->
@@ -146,74 +146,16 @@
 		echo $this->Html->script('rodeo/ajaxModalControl');
 		//Price Format
 		echo $this->Html->script('rodeo/jquery.price_format.2.0.min');
-echo <<<EOT
-		<!--[if IE 8]>
-
-		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
-
-		<![endif]-->
-EOT;
-		
 		
 
 		// <!-- MAIN APP JS FILE -->
 		// <script src="js/app.min.js"></script>
 		echo $this->Html->script('app.min');
-		$controller = $this->params->controller;
-		$action = $this->params->action;
-		echo '<script>$(".'.$controller.$action.'").attr("class","active")</script>';
 
-		//Utilizamos este fetch para cargar plugins de particulares de las
-		//vistas con cake.
 		echo $this->fetch('pageRelatedPlugins');
-
-		// <!-- CakePHP JS helper Output -->
-		echo $this->Js->writeBuffer();
+	
 ?>
 
-		<script type="text/javascript">
-
-			$(document).ready(function() {
-			 					
-				 pageSetUp();
-				 var myVar=setInterval(function(){ CheckConnectionlayout()},30000);
-
-				function CheckConnectionlayout(){
-					
-						SeHizoUnaConsultaPrevia=true;
-						$.ajax({
-								url:<?php echo "'".$this->Html->url(array("controller"=>"remates","action"=>"CheckConnection"))."'";?>,
-								success: function(){
-										//$('#EtiquetaEstadoDeConexion').addClass('bg-color-blueLigh').removeClass('bg-color-redLigh');
-										$("#EtiquetaEstadoDeConexion").html('<span   class="text-center badge bg-color-blueLight dropdown-toggle">Online</span>');			
-								},
-								timeout:20000,
-								error:function( xhr, text, status ) {
-					    				console.clear();
-					    				
-					    				$("#EtiquetaEstadoDeConexion").html('<span   class="text-center badge bg-color-redLight dropdown-toggle">Offline</span>');
-					        					//alert(xhr.status);
-					   						
-					   					}
-						})
-				}
-
-				jQuery.validator.addMethod(
-			    "dinero",
-			    function(value, element) {
-			        var isValidMoney = /(^-*\d+$)|(^-*\d+\.*\.)/.test(value);
-			        return this.optional(element) || isValidMoney;
-			    },
-			    "Introduzca un número valido"
-				);
-				 
-
-
-				 <?php echo $this->fetch('pageScripts'); ?>
-
-			})
-		
-		</script>
 <?php
 		// CakePHP JS helper Output
 		// Aquí se cargan todos los Js generados en las vistas y modales
