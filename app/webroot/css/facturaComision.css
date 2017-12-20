@@ -1,0 +1,200 @@
+body {
+    font-size:14px;
+}
+
+@page {
+    size: A4;
+}
+@media print {
+    #botonVolver1{
+        display: none !important;
+    }
+
+     #botonVolver2{
+        display: none !important;
+    } 
+
+     #debug-kit-toolbar{
+        display: none !important;
+    }
+
+     #botonImprimir1{
+        display: none !important;
+    } 
+
+     #botonImprimir2{
+        display: none !important;
+    }
+
+    #detalleNumero1{
+        border:none;
+    }
+
+    #detalleNumero2{
+        border:none;
+    }
+    .fa-print{
+        display: none !important;
+    }
+}
+
+#botonVolver1 {
+    position:fixed;
+    bottom:40px;
+    left:32%;
+    z-index:1;
+}
+#botonImprimir1 {
+    position:fixed;
+    bottom:40px;
+    left:60%;
+    z-index:1;
+}
+
+#botonVolver2 {
+    position:fixed;
+    bottom:40px;
+    left:32%;
+    z-index:1;
+}
+
+#botonImprimir2 {
+    position:fixed;
+    bottom:40px;
+    left:60%;
+    z-index:1;
+}
+
+#detalleNumero1 {
+    font-size: 14px;
+    position: fixed;
+    top: 79.5mm;
+    left: 47mm;
+}
+
+#detalleNumero2 {
+    font-size: 14px;
+    position: fixed;
+    top: 79.5mm; 
+    left: 47mm;
+}
+
+.fechaFactura {
+    font-weight: bold;
+    position: fixed;
+    top: 40mm;
+    left: 40mm;
+    font-size: 14px;
+}
+
+.ruc {
+    position: fixed;
+    top: 47mm;
+    left: 15mm;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.nombreCliente {
+    position: fixed;
+    top: 50mm;
+    left: 50mm;
+    font-weight: bold;
+    max-width: 75mm;
+    width: 100%;
+    font-size: 14px;
+    max-height: 10mm;
+}
+
+.contado {
+    position: fixed;
+    font-weight: bold;
+    top: 40mm;
+    left: 128mm;
+    font-size: 18px;
+}
+
+.credito {
+    position: fixed;
+    font-weight: bold;
+    top: 40mm;
+    left: 153mm;
+}
+
+.descripcion {
+    position: fixed;
+    top: 75mm;
+    left: 30mm;
+}
+
+.descripcionNro1 {
+    position: fixed;
+    top: 80mm;
+    left: 30mm;
+}
+
+.descripcionNro2 {
+    position: fixed;
+    top: 80mm;
+    left: 30mm;
+}
+
+
+.inputNumero {
+    font-size: 11px;
+    /*float: left;*/
+    padding-left: 80px;
+}
+
+.precio10 {
+    position: fixed;
+    top: 80mm;
+    left: 161mm;
+    max-width: 21mm;
+    width: 100%;
+    text-align: right;
+}
+
+.subtotal {
+    position: fixed;
+    top: 127mm;
+    left: 161mm;
+    max-width: 21mm;
+    width: 100%;
+    text-align: right;
+}
+
+.montoLetras {
+    position: fixed;
+    top: 135mm;
+    left: 37mm;
+    max-width: 110mm;
+    width: 100%;
+    max-height: 10mm;
+}
+
+.total {
+    position: fixed;
+    top: 137mm;
+    left: 153mm;
+    font-weight: bold;
+    width: 100%;
+    max-width: 29mm;
+    text-align: right;
+}
+
+.iva5 {
+    font-size: 11px;
+    float: left;
+    padding-left: 190px;
+    padding-top: 15px;
+}
+
+.iva10 {
+    font-size: 12px;
+    position: fixed;
+    top: 149mm;
+    left: 91mm;
+}
+
+.totalIva {font-size: 12px;     position: fixed;top: 149mm;left: 138mm;}

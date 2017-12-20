@@ -1,0 +1,194 @@
+/*CSS IMPRESION A4 */
+/*.morris-hover {  
+  opacity: 0;
+  position: absolute;
+}*/
+
+#leyendaMorris {
+    height: 40px;
+    /*background: rgba(127, 127, 127, 0.5);*/
+}
+#leyendaMorris span {
+    display: inline-block;
+    padding: 15px 30px;
+    position: relative;
+    -webkit-print-color-adjust: exact !important;
+}
+#leyendaMorris span:after {
+    padding-left: 4px;
+    content: '\00a0\00a0\00a0\00a0\00a0\00a0';
+    text-decoration: line-through;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 21.0cm;
+    min-height: 29.0cm;
+    padding-left: 2.0cm;
+    padding-top: 0.5cm;
+    padding-right: 2.0cm;
+    padding-bottom: 2.0cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    body {
+        color: inherit;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact;
+    }
+
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+        color: inherit;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact;
+    }
+
+    #botonVolver, #debug-kit-toolbar, #botonImprimir{
+        display: none !important;
+    }
+
+    #leyendaMorris span {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
+/*FIN CSS IMPRESION A4 */
+
+/*CSS PARA DETALLES DE IMPRESION SIN LOGO*/
+#botonVolver {
+    position:fixed;
+    bottom:40px;
+    left:32%;
+    z-index:1;
+}
+
+.imagenTransruta {
+    width: 100px;
+    float: left;
+}
+
+.encabezadoPagina {
+    text-align: center;
+}
+.encabezadoPagina #razonSocial {
+    font-size: 11px;
+    float: left;
+}
+.encabezadoPagina #fecha {
+    font-size: 11px;
+    float: right;
+}
+#paginas {
+    font-size: 11px;
+}
+
+.cabecera {
+    margin:0px;
+    width:100%;
+    text-align: left;
+    font-size:11px;
+}
+.cabecera table {
+    width: 100%
+}
+.cabecera table>tbody>tr>td {
+    width: 33%;
+}
+
+.tabla {
+    border: solid 1px black;
+    width:90%;
+    margin:0px;
+    white-space: nowrap;
+}
+.tabla th {
+    border: solid 1px black;
+    text-align: center;
+    background-color:#DEDEDE;
+    font-size:11px;
+    font-weight:bold;
+}
+.tabla td {
+    border: solid 1px black;
+    text-align: center;
+    font-size:11px;
+    overflow: hidden;
+}
+.tabla td#numeroBoleta {
+    width: 1.5cm;
+    max-width: 1.5cm;
+    overflow: hidden;
+}
+.tabla td#origenDestino {
+    width: 3cm;
+    max-width: 3cm;
+    overflow: hidden;
+}
+.tabla td#facturaRemision {
+    width: 4cm;
+    max-width: 4cm;
+    text-align: left;
+    padding-left: 5px;
+    overflow: hidden;
+}
+.tabla td#rtteDestino {
+    width: 7cm;
+    max-width: 7cm;
+    text-align: left;
+    padding-left: 5px;
+}
+.tabla td#valoresDinero {
+    width: 2cm;
+    text-align: right;
+    padding-right: 2px;
+}
+.tabla td#textoDerecha {
+    text-align: right;
+    padding-right: 5px;
+}
+.tabla td#textoIzquierda {
+    text-align: left;
+    padding-left: 5px;
+}
+.tabla td#textoCentrado {
+    text-align: center;
+    padding-right: 5px;
+}
+.tabla tr:hover {
+    background-color: lightgray;
+}
+
+#botonImprimir {
+    position:fixed;
+    bottom:40px;
+    left:60%;
+    z-index:1;
+}
+
+/*55 tr*/
+
+/*FIN DETALLES IMPRESION*/

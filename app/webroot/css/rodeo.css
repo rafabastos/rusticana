@@ -1,0 +1,131 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+.dropdown-menu {
+ z-index: 100000;
+ }
+ header#header {}
+.smart-style-2 #header, .smart-style-2 .page-footer, .smart-style-2 .superbox-show {
+    background-color: #356E35;
+}
+
+.smart-style-2 .btn-primary, .smart-style-2 .smart-form .button {
+background-color: #1B8330;
+border-color: #217C05;
+}
+
+/*Para solucionar el problema del select2  que muestra su contenido al final de la página*/
+.select2-hidden-accessible{
+	display:none;
+}
+
+.smart-style-2 .btn-primary.active, .smart-style-2 .btn-primary:active, .smart-style-2 .btn-primary:focus, .smart-style-2 .btn-primary:hover, .smart-style-2 .open .dropdown-toggle.btn-primary {
+background-color: #3ED456;
+border-color: #46BE2F;
+}
+
+.smart-style-2 .pagination>.active>a, .smart-style-2 .pagination>.active>a:hover {
+background-color: #0BC03E;
+}
+
+.smart-style-2 .pagination>.active>a {
+background-color: #1D9E22;
+}
+
+.pagination>.active>a, .pagination>.active>a:hover {
+border-color: #32BD59;
+}
+
+.pagination>.active>a {
+border-color: #46921C;
+}
+
+
+
+/*DL, DT, DD TAGS LIST DATA*/
+.detalles {
+    margin-right: 15px;
+    border-right: solid 2px rgb(224, 217, 217);
+}
+.detalles > dl {
+    margin-bottom:50px;
+}
+ 
+.detalles > dl dt {
+    float:left;
+    text-align: right; 
+    font-weight: bold; 
+    margin-right:10px; 
+    padding:5px;  
+    width:50%; 
+}
+ 
+.detalles > dl dd{
+    margin:2px 0; 
+    padding:5px 0;
+}
+
+
+/* CSS para el plan de cuentas */
+.planCuentas {
+    max-width:80%;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+
+
+pre.cake-error { /*MOSTRAR LOS ERRORES DE CAKEPHP*/
+    position: absolute;
+    z-index: 999999999 !important;
+}
+/*ESTILOS CSS PARA EL BLANKET DE LOADING*/
+.cargandoBlanket {
+   opacity: 0;
+   transition: opacity .2s,visibility .2s;
+   transition-delay: .1s;
+   visibility: hidden;
+   background: #000;
+   height: 100%;
+   left: 0px;
+   position: fixed;
+   top: 0;
+   width: 100%;
+   z-index: 2500
+}
+
+.cargandoBlanket[mostrar="true"] {
+   opacity: .5;
+   transition: opacity .2s;
+   transition-delay: .1s;
+   visibility: visible
+}
+.mensajeCargando{
+    position: fixed;
+    top:50%;
+    left:50%;
+    opacity:1;
+    color:white;
+    width:50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+
+}
+/*FIN ESTILOS CSS PARA EL BLANKET DE LOADING*/

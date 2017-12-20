@@ -1,0 +1,172 @@
+/*CSS IMPRESION A4 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 21.6cm;
+    min-height: 33.0cm;
+    padding: 0.5cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+@page {
+    size: foolscap;
+    margin: 0;
+}
+@media print {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+
+    #botonVolver, #debug-kit-toolbar {
+        display: none;
+    }
+}
+/*FIN CSS IMPRESION A4 */
+
+/*CSS PARA DETALLES DE IMPRESION SIN LOGO*/
+#botonVolver {
+    position:fixed;
+    top:50px;
+    left:100px;
+    z-index: 1;
+}
+
+.encabezadoPagina {
+    margin-top: 0.1cm;
+    text-align: center;
+}
+.encabezadoPagina #razonSocial {
+    font-size: 11px;
+    float: left;
+}
+.encabezadoPagina #fecha {
+    font-size: 11px;
+    float: right;
+}
+#paginas {
+    font-size: 11px;
+}
+
+.divisoriaAsientos {
+    border-bottom: solid 1px black;
+    width:100%;
+    margin:0px;
+}
+.divisoriaAsientos #numero {
+    font-weight: bold;
+    font-size: 9px;
+}
+.divisoriaAsientos #fecha {
+    font-weight: bold;
+    margin-right: 3cm;
+    font-size: 9px;
+}
+
+.tablaAsientos table{
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+.tablaAsientos th {
+    border: solid 1px black;
+    text-align: center;
+    background-color:#DEDEDE;
+    font-size:9px;
+    font-weight:bold;
+}
+.tablaAsientos th#cabeceraCuenta {
+    width: 10%;
+}
+.tablaAsientos th#cabeceraDescripcion {
+    width: 35%;
+}
+.tablaAsientos th#cabeceraDetalles {
+    width: 35%;
+}
+.tablaAsientos th#cabeceraDebeHaber {
+    width: 10%;
+}
+
+.lineaTransporte table{
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+.lineaTransporte td {
+    font-size:9px;
+    text-align: right;
+}
+.lineaTransporte td#titulo {
+    width: 80%;
+    font-weight: bold;
+    padding-right: 4px;
+}
+.lineaTransporte td#transporteDebeHaber {
+    width: 10%;
+    padding-right: 2px;
+}
+
+.tablaCuentas table{
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+.tablaCuentas td {
+    font-size:9px;
+}
+.tablaCuentas td#codigoCuenta {
+    width: 10%;
+    padding-left: 2px;
+    padding-right: 5px;
+    text-align: right;
+}
+.tablaCuentas td#descripcionCuenta {
+    width: 35%;
+    padding-left: 5px;
+    text-align: left;
+}
+.tablaCuentas td#detallesCuenta {
+    width: 35%;
+    padding-left: 5px;
+    text-align: left;
+}
+.tablaCuentas td#valorCuenta {
+    width: 10%;
+    text-align: right;
+    padding-right: 2px;
+}
+.tablaCuentas td#valorTotal {
+    border-top: solid 1px black;
+    width: 10%;
+    text-align: right;
+    padding-right: 2px;
+}
+.tablaCuentas td#espacioTotal {
+    width: 80%;
+    text-align: right;
+    padding-right: 4px;
+}
+.tablaCuentas tr:hover {
+    background-color: lightgray;
+}
+
+/*75 tr*/
+
+/*FIN DETALLES IMPRESION*/

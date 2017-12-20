@@ -1,0 +1,100 @@
+/*CSS RECIBO */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 21.0cm;
+    min-height: 29.0cm;
+    padding-left: 2.0cm;
+    padding-top: 1cm;
+    padding-right: 2.0cm;
+    padding-bottom: 2.0cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    float: left;
+}
+
+.encabezado {
+    float: left;
+    padding-left: 50px;
+}
+
+.info {
+    float: left;
+}
+
+.form {
+    text-align: right;
+    float: right;
+}
+
+.separador {
+    border-color: black;
+    clear: both;
+}
+
+.separadorPuntuado {
+    border-top: dotted 1px;
+    clear: both;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    body {
+        color: inherit;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact;
+    }
+
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+        color: inherit;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact;
+    }
+
+    #botonVolver, #debug-kit-toolbar, #botonImprimir{
+        display: none !important;
+    }
+}
+
+#botonVolver {
+    position:fixed;
+    bottom:40px;
+    left:32%;
+    z-index:1;
+}
+
+#botonImprimir {
+    position:fixed;
+    bottom:40px;
+    left:60%;
+    z-index:1;
+}
+
+/*FIN RECIBO*/

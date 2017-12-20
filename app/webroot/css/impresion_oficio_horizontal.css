@@ -1,0 +1,66 @@
+/*CSS IMPRESION LEGAL */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 33cm;
+    min-height: 21.6cm;
+    padding: 0;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.subpage {
+    height: 19mm;
+    margin: 1.0cm;
+}
+.relative{
+  top: -0px;
+  position: relative;
+
+}
+
+@page {
+    size: 8.5in 13in landscape;
+    margin: 0.1in
+}
+@media print {
+    .page {
+        margin: 0;
+        padding: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+        page-break-inside: avoid;
+    }
+
+
+
+    #botonVolver, #debug-kit-toolbar {
+        display: none;
+    }
+}
+/*FIN CSS IMPRESION LEGAL */
+
+/*CSS PARA DETALLES DE IMPRESION*/
+#botonVolver {
+    position:fixed;
+    top:50px;
+    left:100px;
+    z-index: 1;
+}
+/*FIN DETALLES IMPRESION*/

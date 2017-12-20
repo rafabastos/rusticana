@@ -1,0 +1,234 @@
+@media print {
+    #botonVolver, #debug-kit-toolbar, #botonImprimir, #bancoInfo{
+        display: none !important;
+    }
+
+    @page {
+		/*size: 232mm 77mm;*/
+		size: 9.1in 3in;
+	    size: landscape;
+	    margin: 0;
+	    margin-right: 36mm;
+
+	}
+}
+
+#bancoInfo {
+    color: red;
+    position: fixed;
+    top: 240px;
+    left: 110px;
+    font-weight: bold;
+}
+
+#botonVolver {
+	text-decoration: none;
+	position:fixed;
+	top: 260px;
+	left: 260px;
+	background: #2A3E88;
+	padding: 10px;
+	color: #FFF;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+#botonImprimir {
+	text-decoration: none;
+	position:fixed;
+	top: 260px;
+	left:100px;
+	background: #1B7111;
+	padding: 10px;
+	color: #FFF;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
+#itau.fechaDia {
+	position: fixed;
+	top: 17mm;
+	left: 100mm;
+	max-width: 20mm;
+	width:100%;
+	text-align: center;
+}
+
+#itau.fechaMes {
+	position: fixed;
+	top: 17mm;
+	left: 125mm;
+	max-width: 28mm;
+	width:100%;
+	text-align: center;
+}
+
+#itau.fechaAnho {
+	position: fixed;
+	top: 17mm;
+	left: 157mm;
+	max-width: 11mm;
+	width:100%;
+	text-align: center;
+}
+
+#itau.monto {
+	position: fixed;
+	top: 17mm;
+	left: 185mm;
+	max-width: 135mm;
+	width:100%;
+	text-align: left;
+	font-size:14px;
+}
+
+#itau.pagueseOrden {
+	position: fixed;
+	top: 31mm;
+	left: 76mm;
+	max-width: 145mm;
+	width:100%;
+}
+
+#itau.montoLetras {
+	position: fixed;
+	top: 38mm;
+	left: 85mm;
+	font-size: 10px;
+	max-width: 120mm;
+	width:100%;
+	line-height: 6mm;
+}
+
+#itau.fecha {
+	position: fixed;
+	top: 16mm;
+	left: 26.5mm;
+	font-size: 8px;
+	max-width: 26mm;
+	width:100%;
+}
+
+#itau.orden {
+	position: fixed;
+	top: 21mm;
+	left: 26.5mm;
+	font-size: 8px;
+	max-width: 26mm;
+	width:100%;
+	height :15px;
+	overflow:hidden;
+	line-height:1;
+}
+
+#itau.concepto {
+	position: fixed;
+	top: 26mm;
+	left: 27.5mm;
+	font-size: 8px;
+	max-width: 26mm;
+	width:100%;
+}
+
+#itau.montoCheque {
+	position: fixed;
+	top: 49mm;
+	left: 29mm;
+	font-size: 8px;
+	max-width: 25mm;
+	width:100%;
+}
+
+#sinBanco.fechaDia {
+	position: fixed;
+	top: 17mm;
+	left: 100mm;
+	max-width: 20mm;
+	width:100%;
+	text-align: center;
+}
+
+#sinBanco.fechaMes {
+	position: fixed;
+	top: 17mm;
+	left: 125mm;
+	max-width: 28mm;
+	width:100%;
+	text-align: center;
+}
+
+#sinBanco.fechaAnho {
+	position: fixed;
+	top: 17mm;
+	left: 157mm;
+	max-width: 11mm;
+	width:100%;
+	text-align: center;
+}
+
+#sinBanco.monto {
+	position: fixed;
+	top: 17mm;
+	left: 185mm;
+	max-width: 135mm;
+	width:100%;
+	text-align: left;
+	font-size:14px;
+}
+
+#sinBanco.pagueseOrden {
+	position: fixed;
+	top: 31mm;
+	left: 76mm;
+	max-width: 145mm;
+	width:100%;
+}
+
+#sinBanco.montoLetras {
+	position: fixed;
+	top: 38mm;
+	left: 85mm;
+	font-size: 10px;
+	max-width: 120mm;
+	width:100%;
+	line-height: 6mm;
+}
+
+#sinBanco.fecha {
+	position: fixed;
+	top: 16mm;
+	left: 26.5mm;
+	font-size: 8px;
+	max-width: 26mm;
+	width:100%;
+}
+
+#sinBanco.orden {
+	position: fixed;
+	top: 21mm;
+	left: 26.5mm;
+	font-size: 8px;
+	max-width: 26mm;
+	width:100%;
+	height :15px;
+	overflow:hidden; 
+	line-height:1;
+}
+
+#sinBanco.concepto {
+	position: fixed;
+	top: 26mm;
+	left: 27.5mm;
+	font-size: 8px;
+	max-width: 26mm;
+	width:100%;
+}
+
+#sinBanco.montoCheque {
+	position: fixed;
+	top: 49mm;
+	left: 29mm;
+	font-size: 8px;
+	max-width: 25mm;
+	width:100%;
+}

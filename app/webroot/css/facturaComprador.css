@@ -1,0 +1,167 @@
+body {
+    font-size:14px;
+}
+
+@page {
+    size: A4;
+}
+@media print {
+    #botonVolver1, #debug-kit-toolbar, #botonImprimir1{
+        display: none !important;
+    }
+    #botonVolver2, #debug-kit-toolbar, #botonImprimir1{
+        display: none !important;
+    }
+
+}
+
+#botonVolver1 {
+    position:fixed;
+    bottom:40px;
+    left:32%;
+    z-index:1;
+}
+#botonImprimir2 {
+    position:fixed;
+    bottom:40px;
+    left:60%;
+    z-index:1;
+}
+
+#botonVolver2 {
+    position:fixed;
+    bottom:40px;
+    left:32%;
+    z-index:1;
+}
+#botonImprimir1 {
+    position:fixed;
+    bottom:40px;
+    left:60%;
+    z-index:1;
+}
+
+table.detalleFactura{
+    position: fixed;
+    top: 71mm;
+    left: 13mm;
+}
+
+/*Cabecera factura*/
+.fechaFactura {
+    position: fixed;
+    top: 41mm;
+    left: 38mm;
+    font-weight: bold;
+}
+
+.contado {
+    position: fixed;
+    top: 42mm;
+    left: 124mm;
+    font-weight: bold;
+}
+
+.credito {
+    position: fixed;
+    top: 51mm;
+    left: 145mm;
+}
+
+.vencimiento {
+    position: fixed;
+    top: 51mm;
+    left: 262mm;
+}
+
+.ruc {
+    position: fixed;
+    top: 48mm;
+    left: 15mm;
+    font-weight: bold;
+}
+
+.nombreCliente {
+    position: fixed;
+    top: 52mm;
+    left: 48mm;
+    font-weight: bold;
+    max-width: 80mm;
+    width: 100%;
+}
+
+.remision {
+    position: fixed;
+    top: 75mm;
+    left: 270mm;
+}
+
+.montoLetras {
+    position: fixed;
+    top: 133mm;
+    left: 38mm;
+    max-width: 107mm;
+}
+
+.total {
+    position: fixed;
+    top: 133mm;
+    left: 156mm;
+}
+
+.subtotal5 {
+    position: fixed;
+    left: 124mm;
+    top: 123mm;
+    width: 27mm;
+    text-align: right;
+}
+
+.subtotal10 {
+    position: fixed;
+    top: 123mm;
+    left: 152mm;
+    width: 26mm;
+    text-align: right;
+}
+
+.iva5 {
+    position: fixed;
+    left: 52mm;
+    top: 146mm;
+}
+
+.iva10 {
+    position: fixed;
+    top: 146mm;
+    left: 92mm;
+}
+
+.totalIva {
+    position: fixed;
+    top: 146mm;
+    left: 143mm;
+}
+
+.cantidad {
+    width: 15mm;
+    text-align: center;
+}
+
+.descripcion {
+    width: 70mm;
+}
+
+.exenta {
+    width: 21mm;
+}
+
+.precio5 {
+    width: 27mm;
+    text-align: right;
+}
+
+.precio10 {
+    width: 26mm;
+    text-align: right;
+}

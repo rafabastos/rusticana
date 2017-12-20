@@ -1,0 +1,230 @@
+/*CSS IMPRESION A4 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+  
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 19cm;
+    min-height: 29.7cm;
+    padding: 0.5cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.subpage {
+    /*padding: 1cm;*/
+    /*border: 5px red solid;*/
+    height: 237mm;
+    margin: 1.0cm;
+    /*outline: 0.5cm #FFEAEA solid;*/
+}
+.relative{
+  top: -0px;
+  position: relative;
+
+}
+@page {
+    size: letter;
+    margin-top: 3cm;
+}
+@media print {
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+
+    #debug-kit-toolbar {
+        display: none;
+    }
+
+    #botonVolver {
+        display: none;
+    }
+
+    h4 {
+      text-transform: uppercase;
+      font-size: 10px;
+      line-height: 5px
+    }
+
+    h1, h3 {
+      font-size: 14px;
+    }
+
+    table {
+      font-size: 10px;
+    }
+
+    .table>tbody>tr>td {
+      padding: 0 5px 0 5px;
+    }
+
+    .table>tfoot>tr>td {
+      padding: 2px 5px 2px 5px;
+    }
+
+   div.page{
+        page-break-after: always;
+        page-break-inside: avoid;
+    }
+
+    .espacioBlanco{
+        height: 3cm;
+    }
+}
+
+table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
+thead { display:table-header-group }
+tfoot { display:table-footer-group }
+
+tbody tr.head {
+    page-break-before: always;
+    page-break-inside: avoid;
+}
+@media screen {
+    tbody .head{
+        display: none;
+    }
+table {
+  font-size: 8px;
+}
+
+h4 {
+  font-size: 10px;
+}
+h3 {
+  font-size: 12px;
+}
+
+h1 {
+  font-size: 16px;
+}
+
+#logo {
+  height: 60px;
+  padding: 5px;
+}
+
+.note {
+  font-size: 9px;
+}
+
+.watermark {
+  position: absolute;
+  top: 100px; 
+  z-index: 10;
+  font-size: 100px;
+  opacity: 0.08;
+  -ms-transform: rotate(-35deg); /* IE 9 */
+  -webkit-transform: rotate(-35deg); /* Chrome, Safari, Opera */
+   transform: rotate(-35deg);
+  text-align: center;
+  text-align: center;
+}
+
+br.saltoPagina {
+  padding-top: 100px;
+}
+
+table.fijo {
+  width:50%;
+}
+
+#botonVolver {
+    position:fixed;
+    top:50px;
+    left:100px;
+    z-index: 1;
+}
+
+
+   
+ /* THE FOLLOWING CSS IS REQUIRED AND SHOULD NOT BE MODIFIED. */
+div.fauxRow {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  page-break-inside: avoid;
+}
+table.fauxRow {border-spacing: 0;}
+table.fauxRow > tbody > tr > td {
+  padding: 0;
+  overflow: hidden;
+}
+table.fauxRow > tbody > tr > td > table.print {
+  display: inline-table;
+  vertical-align: top;
+}
+table.fauxRow > tbody > tr > td > table.print > caption {caption-side: top;}
+.noBreak {
+  float: right;
+  width: 100%;
+  visibility: hidden;
+}
+.noBreak:before, .noBreak:after {
+  display: block;
+  content: "";
+}
+.noBreak:after {margin-top: -594mm;}
+.noBreak > div {
+  display: inline-block;
+  vertical-align: top;
+  width:100%;
+  page-break-inside: avoid;
+}
+table.print > thead {white-space: nowrap;} /* Soft-wrapping not allowed in thead, but <br/> tags are OK. */
+table.print > tbody > tr {page-break-inside: avoid;}
+table.print > tbody > .metricsRow > td {border-top: none !important;}
+
+/* THE FOLLOWING CSS IS REQUIRED, but the values may be adjusted. */
+/* NOTE: All size values that can affect an element's height should use the px unit! */
+table.fauxRow, table.print {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+/* THE FOLLOWING CSS IS OPTIONAL. */
+body {counter-reset: t1;} /* Delete to remove row numbers. */
+.noBreak .t1 > tbody > tr > :first-child:before {counter-increment: none;} /* Delete to remove row numbers. */
+.t1 > tbody > tr > :first-child:before { /* Delete to remove row numbers. */
+  display: block;
+  text-align: right;
+  counter-increment: t1 1;
+  content: counter(t1);
+}
+table.fauxRow, table.print {
+  font-family: Tahoma, Verdana, Georgia; /* Try to use fonts that don't get bigger when printed. */
+  margin: 0 auto 0 auto; /* Delete if you don't want table to be centered. */
+}
+table.print {border-spacing: 0;}
+table.print > * > tr > * {
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  padding: 0 5px 0 5px;
+}
+table.print > * > :first-child > * {border-top: 2px solid black;}
+table.print > thead ~ * > :first-child > *, table.print > tbody ~ * > :first-child > * {border-top: none;}
+table.print > * > tr > :first-child {border-left: 2px solid black;}
+table.print > thead {vertical-align: bottom;}
+table.print > thead > .borderRow > th {border-bottom: none;}
+table.print > tbody {vertical-align: top;}
+table.print > caption {font-weight: bold;}
+
+#pago{
+  
+}

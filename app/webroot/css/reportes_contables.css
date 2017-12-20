@@ -1,0 +1,152 @@
+/*CSS IMPRESION A4 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 21.0cm;
+    min-height: 29.7cm;
+    padding: 0.5cm;
+    margin: 1cm auto;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+
+    #botonVolver {
+        display: none;
+    }
+}
+/*FIN CSS IMPRESION A4 */
+
+/*CSS PARA DETALLES DE IMPRESION SIN LOGO*/
+
+#botonVolver {
+    position:fixed;
+    top:50px;
+    left:100px;
+    z-index: 1;
+}
+
+.encabezadoPagina {
+    margin-top: 2cm;
+    text-align: center;
+}
+.encabezadoPagina #razonSocial {
+    font-size: 11px;
+    float: left;
+}
+.encabezadoPagina #fecha {
+    font-size: 11px;
+    float: right;
+}
+#paginas {
+    font-size: 11px;
+}
+
+.cabeceraBalance {
+    margin:0px;
+    width:100%;
+}
+.cabeceraBalance table {
+    border-spacing: 0;
+    width:100%;
+    height:100%;
+    margin:0px;    
+}
+.cabeceraBalance th {
+    border: dotted 1px;
+    text-align: center;
+    vertical-align:middle;
+    font-size:11px;
+    font-weight:bold;
+}
+.cabeceraBalance td {
+    border: dotted 1px;
+    font-size:11px;
+    padding-left: 5px;
+}
+
+
+.tablasBalance {
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+.tablaBalance table {
+    border: solid 1px black;
+    width:100%;
+    margin:0px;
+}
+.tablaBalance th {
+    border: solid 1px black;
+    text-align: center;
+    background-color:#DEDEDE;
+    font-size:11px;
+    font-weight:bold;
+}
+.tablaBalance tr#cuentaProcesada {
+    text-align: center;
+}
+.tablaBalance tr#lineaSaldos {
+    border-bottom: solid 1px black;
+    text-align: right;
+}
+.tablaBalance tr#finSaldos {
+    border-top: solid 1px black;
+    text-align: right;
+}
+.tablaBalance td#valoresSaldos {
+    text-align: right;
+    padding-right: 2px;
+}
+.tablaBalance td {
+    font-size:11px;
+}
+.tablaBalance td#codigoCuenta {
+    width: 2cm;
+    padding-left: 2px;
+}
+.tablaBalance td#valorCuenta {
+    width: 2.5cm;
+    text-align: right;
+    border-left: solid 1px black;
+    padding-right: 2px;
+}
+.tablaBalance td#asientoId {
+    width: 1.5cm;
+    padding-left: 2px;
+}
+.tablaBalance td#fecha {
+    width: 2cm;
+    text-align: center;
+}
+.tablaBalance tr:hover {
+    background-color: lightgray;
+}
+
+/*55 tr*/
+
+/*FIN DETALLES IMPRESION*/

@@ -1,0 +1,18 @@
+/*CSS IMPRESION A4 */
+@page {
+    size: letter;
+    margin-top: 0cm;
+}
+@media print {
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+

@@ -1,0 +1,106 @@
+/*CSS IMPRESION LEGAL */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 21.5cm;
+    min-height: 33cm;
+    padding: 0;
+    margin: 0;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    .page {
+        margin: 0;
+        padding: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+    
+    #botonVolver {
+        display: none;
+    }
+}
+/*FIN CSS IMPRESION LEGAL */
+
+/*CSS PARA DETALLES DE IMPRESION*/
+#botonVolver {
+    position:fixed;
+    top:50px;
+    left:100px;
+    z-index: 1;
+}
+
+.vendedorRuc {
+  position:absolute;
+  top: 4.2cm;
+  left: 15.7cm;
+}
+.vendedorRazonSocial {
+  position:absolute;
+  top: 5.5cm;
+  left: 5.5cm;
+}
+.lugar {
+  position:absolute;
+  top: 7.5cm;
+  left: 5.5cm;
+}
+.fecha {
+  position:absolute;
+  top: 8.4cm;
+  left: 7.5cm;
+}
+.cantidad {
+  position:absolute;
+  top: 11.3cm;
+  left: 1.2cm;
+}
+.categoria {
+  position:absolute;
+  top: 11.3cm;
+  left: 2.8cm;
+}
+.compradorRazonSocial {
+  position:absolute;
+  top: 18.7cm;
+  left: 5cm;
+}
+.compradorRuc {
+  position:absolute;
+  top: 18.7cm;
+  left: 16.4cm;
+}
+.guiaTraslado {
+  position:absolute;
+  top: 21.8cm;
+  left: 1.2cm;
+}
+.retencionImpuesto {
+  position:absolute;
+  top: 22.2cm;
+  left: 9cm;
+}
+
+
+
+/*FIN DETALLES IMPRESION*/

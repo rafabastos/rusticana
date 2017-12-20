@@ -1,0 +1,194 @@
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+tr { 
+	page-break-inside:avoid; 
+	page-break-after:auto;
+}
+
+th {
+	border-bottom: 1px solid black;
+	margin-bottom: 5px;
+}
+
+th, td {
+	padding-right:15px;
+}
+
+thead {
+    font-size: 11px;
+    text-align: left;
+    display:table-header-group;
+    border-bottom:1px solid black;
+    
+}
+
+tbody {
+    font-size: 10px;
+    text-align:;
+}
+
+tfoot tr{
+    font-size: 12px;
+    font: bold;
+    border-top: 1px solid black;
+    margin-top: 5px;
+}
+
+
+h1 {
+    font-size: 14px;
+    text-align: center;
+}
+
+.cabecera {
+
+}
+
+.encargado {
+    margin-top: 5px;
+    font-size: 14px;
+    font: bold;
+}
+
+.ruc {
+    font-size: 10px;
+    text-align: center;
+    float:left;
+    width:40%;
+}
+
+.numeroPagina {
+    float: right;
+    text-align: right;
+    font-size: 10px;
+    width:30%;
+}
+
+.fechaHora {
+    font-size: 10px;
+    float: left;
+    width:30%;
+}
+
+.titulo {
+    text-align: center;
+    padding-top: 0.5cm;
+}
+
+.periodo {
+    font-size: 12px;
+    font: bold;
+    margin-bottom: 10px;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.resumenGeneral {
+	font-size:20px;
+    margin-top:30px;
+}
+
+.resumenTitulo {
+	font-size: 30px;
+	text-align: center;
+}
+
+.footer td{
+	font-size:16px;
+	padding-bottom: 35px;
+	padding-left: 10px;
+	border-top: 1px solid black;
+}
+
+
+.resumenGeneral table {
+    margin-top:50px;
+    font-size:12px;
+}
+
+.resumenGeneral tr > td {
+    padding-bottom: 20px;
+    font-size:12px;
+}
+
+.resumenGeneral th {
+    text-align: right;
+    font-size:12px;
+}
+
+
+#btnVolver {
+    position:fixed;
+    bottom:40px;
+    left:32%;
+    z-index:1;
+}
+
+#botonImprimir {
+    position:fixed;
+    bottom:40px;
+    left:60%;
+    z-index:1;
+}
+
+/*################################################################*/
+/*CSS IMPRESION LEGAL */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+}
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 0;
+    margin: 0;
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+@page {
+    size: A4;
+    margin: 0.5cm;
+}
+/*FIN CSS IMPRESION LEGAL */
+
+
+/*##########################################################*/
+
+@media print {
+    .page {
+        margin: 0;
+        padding: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+    #btnVolver, #debug-kit-toolbar, #botonImprimir{
+        display: none !important;
+    }
+}
