@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
  * @property Cliente $Cliente
  * @property PaginatorComponent $Paginator
  */
-class ProductosController extends AppController {
+class TipoProductosController extends AppController {
 
 /**
  * Components
@@ -31,28 +31,23 @@ class ProductosController extends AppController {
 		if($this->request->is(array('ajax'))) {
 			$this->autoRender=false;
 			$query=$this->request->query;
-			$modelo = 'Producto';
+			$modelo = 'TipoProducto';
 	        $campos = array(
-					'id',
-					'nombre',
-					'descripcion',
+					'TipoProducto.id',
+					'TipoProducto.tipo',
+					'TipoProducto.descripcion'
 					);
 	        $contiene = [
-				'TipoProducto'=>[
-					'tipo',
-				],
 			];
 	        $columnas = [
-				'Producto.id',
-	        	'Producto.nombre',
-	        	'Producto.descripcion',
+				'TipoProducto.id',
 				'TipoProducto.tipo',
+				'TipoProducto.descripcion'
 			];
 	        $columnasBusqueda = [
-				'Producto.id',
-				'Producto.nombre',
-				'Producto.descripcion',
+				'TipoProducto.id',
 				'TipoProducto.tipo',
+				'TipoProducto.descripcion'
 			];
 	        
         	$condiciones=null;
@@ -65,11 +60,10 @@ class ProductosController extends AppController {
 			$view = new View($this);
 	        $html = $view->loadHelper('Html','Form');
 
-			foreach ($output['aaData'][0] as $key => $producto) {
-				$resultado['data'][$key]['id']=$producto['Producto']['id'];
-				$resultado['data'][$key]['nombre']=$producto['Producto']['nombre'];
-				$resultado['data'][$key]['descripcion']=$producto['Producto']['descripcion'];
-				$resultado['data'][$key]['tipo']=$producto['TipoProducto']['tipo'];
+			foreach ($output['aaData'][0] as $key => $cliente) {
+				$resultado['data'][$key]['id']=$cliente['TipoProducto']['id'];
+				$resultado['data'][$key]['tipo']=$cliente['TipoProducto']['tipo'];
+				$resultado['data'][$key]['descripcion']=$cliente['TipoProducto']['descripcion'];
 				$resultado['data'][$key]['acciones']= 'acciones';
 				// $view->Html->link(__('<i class="fa fa-list-ol"></i>'), array('action' => 'detalles', $cliente['Cliente']['id']),
 				// 	array('escape'=>false, 'class'=>'btn btn-default btn-xs','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Detalles')).
@@ -83,52 +77,6 @@ class ProductosController extends AppController {
 	}
 
 /**
- * view method
- *
- * @throws NotFoundException
- * @param string $id cliente
- * @return void
- */
-	public function detalles($id = null) {
-		if (!$this->Cliente->exists($id)) {
-			throw new NotFoundException(__('No encontrado'));
-		}
-
-		$options = array('conditions' => array('Cliente.' . $this->Cliente->primaryKey => $id));
-		$cliente = $this->Cliente->find('first', $options);
-		
-		$this->loadModel('Credito');
-		$creditos = $this->Credito->find('all',array(
-			'conditions'=>array(
-				'Credito.cliente_id'=>$id,
-			),
-			'recursive' => -1
-		));	
-
-		// $cliente = $this->Cliente->id=$id;
-
-		// $facturas=$this->Factura->find('all',array('conditions'=>'Factura.cliente_id= $cliente'));
-
-		//Para que el formulario de ESTABLECIMIENTOS sea publado con las opciones
-		//correctas se debe extraer los datos relacionados al cliente
-		$clientes = array($cliente['Cliente']['id'] => $cliente['Cliente']['razon_social']);
-		$paises = $this->Cliente->Establecimiento->Pais->find('list');
-		$cdepartamentos = $this->Cliente->Establecimiento->Departamento->find('list');
-		$cciudades = $this->Cliente->Establecimiento->Ciudad->find('list');
-		$clocalidades = $this->Cliente->Establecimiento->Localidad->find('list');
-		$tipoFerias = $this->Cliente->Comision->TipoFeria->find('list');
-		$tiposDeCliente = array();
-		foreach ($cliente['TipoCliente'] as $value) {
-			if($value['id'] != PROVEEDOR) // Se restringe la comisión solamente al tipo COMPRADOR Y VENDEDOR
-				$tiposDeCliente[] = $value['id'];
-		}
-
-		$tipoClientes = $this->Cliente->Comision->TipoCliente->find('list',array('conditions'=>array('TipoCliente.id'=>$tiposDeCliente)));
-		$this->set(compact('cliente','creditos','clientes', 'paises', 'cdepartamentos', 'cciudades', 'clocalidades','tipoFerias','tipoClientes'));
-
-	}
-
-/**
  * add method
  *
  * @return void
@@ -136,25 +84,12 @@ class ProductosController extends AppController {
 	public function nuevo() {
 		
 		if ($this->request->is('post')) {
-
-			$this->Producto->create();
-			if ($this->Producto->save($this->request->data)) {
+			$this->TipoProducto->create();
+			if ($this->TipoProducto->save($this->request->data)) {
+				// $this->Session->setFlash('El tipo de producto ha sido agregado.','Flash/success');
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
-
-		$tipoProductos = $this->Producto->TipoProducto->find('list');
-		$this->loadModel('TipoProducto');
-		foreach ($tipoProductos as $key => $value) {
-			$tipo = $this->TipoProducto->find('first',array(
-				'conditions'=>array('id'=>$key),
-				'fields'=>'tipo',
-				'recursive'=>-1
-			));
-			$tipoProductos[$key] = $tipo['TipoProducto']['tipo'];
-		}
-		$this->set(compact('tipoProductos'));
-
 	}
 
 	public function editar($id = null) {
@@ -178,13 +113,13 @@ class ProductosController extends AppController {
 		$this->set(compact('tipoPersonas', 'tipoClientes'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
+// /**
+//  * delete method
+//  *
+//  * @throws NotFoundException
+//  * @param string $id
+//  * @return void
+//  */
 	public function borrar($id = null) {
 		$this->loadModel('Remate');
 		$this->loadModel('Programacion');

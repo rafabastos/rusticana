@@ -1,6 +1,6 @@
 <?php
 //BREADCRUMBS
-$this->Html->addCrumb('Nuevo Producto', array('controller' => 'producto', 'action' => 'nuevo'));
+$this->Html->addCrumb('Nuevo Tipo de Producto', array('controller' => 'tipoProductos', 'action' => 'nuevo'));
 
 //Scripts para que funcione la validación del formulario
 	$this->start('pageScripts');
@@ -87,19 +87,19 @@ EOT;
 	<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
 		<h1 class="page-title txt-color-blueDark">
 		<i class="fa fa-pencil-square-o fa-fw "></i>
-		Nuevo Producto
+		Nuevo Tipo de Producto
 		</h1>
 	</div>
 </div>
 
 
 <?php
-echo $this->Form->create('Producto', array(
+echo $this->Form->create('TipoProducto', array(
     'inputDefaults' => array(
         'label' => false,
         'div' => false
     ),
-    'id' => 'producto-form',
+    'id' => 'tipoProducto-form',
     'class' => 'smart-form',
     'novalidate' => 'novalidate'
 	) 
@@ -107,26 +107,18 @@ echo $this->Form->create('Producto', array(
 ?>
 <fieldset>
 	<div class = "row">
-		<section class= "col col-md-4">
-			<label class="label">Nombre</label>
-			<label class="input"> 
-				<?php echo $this->Form->input('nombre', array('placeholder'=>'Introduzca nombre del producto'));?>
-		    </label>
-		</section> 
-		
-		 <section class="col col-md-4">
+		<section class= "col col-md-8">
 			<label class="label">Tipo de Producto</label>
-			<label class="select">
-				<?php echo $this->Form->input('tipo_producto_id');?>	
-				<i></i>
-			</label> 
+			<label class="input"> 
+				<?php echo $this->Form->input('tipo', array('placeholder'=>'Introduzca el tipo del producto'));?>
+		    </label>
 		</section> 
 	</div>
 	<div class = "row">
 		<section class= "col col-md-8">
 			<label class="label">Descripcion</label>
 			<label class="textarea textarea-resizable">
-				<?php echo $this->Form->input('descripcion', array('rows'=>'3','class'=>'custom-scroll','placeholder'=>'descripcion del producto'));?>
+				<?php echo $this->Form->input('descripcion', array('rows'=>'3','class'=>'custom-scroll','placeholder'=>'Descripcion del producto'));?>
 			</label>
 		</section>
 	</div>

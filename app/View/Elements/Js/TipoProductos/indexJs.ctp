@@ -1,5 +1,5 @@
 var spanishURL = <?php echo "'{$this->html->url('/js/plugin/datatables/Spanish.json')}';" ?>
-var getProductosUrl= <?php echo "'{$this->html->url(array('controller'=>'productos','action'=>'index'))}';" ?>;
+var getTipoProductosUrl= <?php echo "'{$this->html->url(array('controller'=>'tipoProductos','action'=>'index'))}';" ?>;
 
 $("a#btn-borrar").click(function(e) {
 	var btnBorrar = $(this);
@@ -29,7 +29,7 @@ var breakpointDefinition = {
  tablaClientes = $('#dt_productos').DataTable({
    	"bProcessing": true,
     "bServerSide": true,
-    "sAjaxSource": getProductosUrl,
+    "sAjaxSource": getTipoProductosUrl,
 	fnServerData : function ( sSource, aoData, fnCallback ) {
           // push parameter onto the aoData array.
           // send request to server, use default fnCallback to process returned JSON
@@ -46,13 +46,12 @@ var breakpointDefinition = {
 		},
 	"bDeferRender": true,
 	"aoColumnDefs": [
-        { "sClass": "text-right", "aTargets": [ 4 ] }
+        { "sClass": "text-right", "aTargets": [ 3 ] }
     ],
 	"aoColumns":[
 		{'data':'id'},
-		{"data":"nombre"},
-		{"data":"descripcion"},
 		{"data":"tipo"},
+		{"data":"descripcion"},
 		{"data":"acciones","bSortable":false,'bSearchable':false}
 	], 
 	"oLanguage": {

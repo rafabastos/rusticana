@@ -55,29 +55,62 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#"> <i class="fa fa-lg fa-fw fa-truck"></i><span class="menu-item-parent">Proveedores</span></a>
+						<a href="#"> <i class="fa fa-lg fa-fw fa-list"></i><span class="menu-item-parent">Combos</span></a>
 						<ul>
 							<li class="">
-								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'clientes','action'=>'listarProveedores'],['escape'=>false]); ?>
+								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'combos','action'=>'listarProveedores'],['escape'=>false]); ?>
 							</li>
 							<li class="">
-								<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'clientes','action'=>'nuevo'],['escape'=>false]); ?>
+								<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'combos','action'=>'nuevo'],['escape'=>false]); ?>
+							</li>	
+						</ul>
+					</li>
+					<li>
+						<a href="#"> <i class="fa fa-lg fa-fw fa-cog"></i><span class="menu-item-parent">Productos</span></a>
+						<ul>
+							<li class="">
+								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'tipoProductos','action'=>'index'],['escape'=>false]); ?>
+							</li>
+							<li class="">
+								<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'tipoProductos','action'=>'nuevo'],['escape'=>false]); ?>
 							</li>	
 						</ul>
 					</li>
 				</ul>
 			</nav>
 
-			<span class="minifyme" data-action="minifyMenu"> 
-				<i class="fa fa-arrow-circle-left hit"></i> 
-			</span>
 
 		</aside>
 		<!-- END NAVIGATION -->
 
+			<!-- RIBBON -->
+
+
+
 		<!-- MAIN PANEL -->
 		<div id="main" role="main">
-<?php echo $this->fetch('content'); ?>
+			<div id="ribbon">
+
+				<span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span> 
+				</span>
+
+				<!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>
+						<?php echo $this->Html->getCrumbs(' <i class="fa fa-chevron-right font-xs"></i> ', array('text' => '<i class="fa fa-home fa-lg"></i>', 'url' => array('controller' => 'pages', 'action' => 'display', 'home'),'escape'=> false)); ?>
+					</li>
+				</ol>
+			</div>
+			<span class="minifyme" data-action="minifyMenu"> 
+				<i class="fa fa-arrow-circle-left hit"></i> 
+			</span>
+			<?php echo '<div class="row"></div>'; ?>
+			<div id="content">
+				<?php echo $this->fetch('content'); ?>
+			</div>
 		</div>
 
 		<!-- PAGE FOOTER -->
