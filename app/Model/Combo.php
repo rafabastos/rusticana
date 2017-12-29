@@ -3,7 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * TipoProducto Model
  */
-class Producto extends AppModel {
+class Combo extends AppModel {
 
 /**
  * Validation rules
@@ -11,7 +11,7 @@ class Producto extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'tipo' => array(
+		'nombre' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
@@ -23,21 +23,10 @@ class Producto extends AppModel {
 		),
 	);
 
-	public $belongsTo = array(
-		'TipoProducto' => array(
-			'className' => 'TipoProducto',
-			'foreignKey' => 'tipo_producto_id',
-			'conditions' => '',
-			'fields' => 'tipo',
-			'order' => ''
-		),
-	);
-
-	
 	public $hasMany = array(
-		'ProductoCombo' => array(
-			'className' => 'ProductoCombo',
-			// 'foreignKey' => 'combo_id',
+		'ProductoCombos' => array(
+			'className' => 'ProductoCombos',
+			'foreignKey' => 'combo_id',
 			// 'dependent' => false,
 			'conditions' => '',
 			'fields' => '',
@@ -49,5 +38,4 @@ class Producto extends AppModel {
 			'counterQuery' => ''
 		),
 	);
-
 }

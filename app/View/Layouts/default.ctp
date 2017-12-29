@@ -58,7 +58,7 @@
 						<a href="#"> <i class="fa fa-lg fa-fw fa-list"></i><span class="menu-item-parent">Combos</span></a>
 						<ul>
 							<li class="">
-								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'combos','action'=>'listarProveedores'],['escape'=>false]); ?>
+								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'combos','action'=>'index'],['escape'=>false]); ?>
 							</li>
 							<li class="">
 								<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'combos','action'=>'nuevo'],['escape'=>false]); ?>
