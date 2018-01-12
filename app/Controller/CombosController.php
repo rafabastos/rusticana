@@ -101,7 +101,7 @@ class CombosController extends AppController {
 		$productos = $this->Productos->find('all');
 		$comidas = array();
 		$bebidas = array();
-		foreach ($productos as $id => $producto) {
+		foreach ($productos as $key => $producto) {
 			if ($producto['Productos']['tipo_producto_id'] == 1){
 				$bebidas[$producto['Productos']['id']] = $producto['Productos']['nombre'];
 			}

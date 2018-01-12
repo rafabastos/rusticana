@@ -13,31 +13,31 @@ $this->end();
 
 echo <<<EOT
 
-		// function borrarMessageBox(btn, titulo,contenido) {
-		// 	$.SmartMessageBox({
-		// 		title : titulo,
-		// 		sound: false,
-		// 		content : contenido,
-		// 		buttons : "[No][Sí]"
-		// 	}, function(ButtonPressed) {
-		// 		if (ButtonPressed === "Sí") {
-		// 			window.location = btn.attr('href');
-		// 		}	
+		function borrarMessageBox(btn, titulo,contenido) {
+			$.SmartMessageBox({
+				title : titulo,
+				sound: false,
+				content : contenido,
+				buttons : "[No][Sí]"
+			}, function(ButtonPressed) {
+				if (ButtonPressed === "Sí") {
+					window.location = btn.attr('href');
+				}	
 
-		// 	});
-		// }
+			});
+		}
 
 
 
-		// $("a#btn-borrarComision").click(function(e) {
-		// 	borrarMessageBox($(this),"<i class='fa fa-warning fa-lg txt-color-yellow'></i> ¡ATENCIÓN! <br>¿Esta seguro que desea borrar la comisión: <strong>"+$(this).attr("datos")+"</strong>?","(Esta acción no podrá ser revertida)");
-		// 	e.preventDefault();
-		// });
+		$("a#btn-borrarBebida").click(function(e) {
+			borrarMessageBox($(this),"<i class='fa fa-warning fa-lg txt-color-yellow'></i> ¡ATENCIÓN! <br>¿Esta seguro que desea borrar la comisión: <strong>"+$(this).attr("datos")+"</strong>?","(Esta acción no podrá ser revertida)");
+			e.preventDefault();
+		});
 
-		// $("a#btn-borrarEstablecimiento").click(function(e) {
-		// 	borrarMessageBox($(this),"<i class='fa fa-warning fa-lg txt-color-yellow'></i> <strong>¡ATENCIÓN!</strong> <br>¿Esta seguro que desea borrar el establecimiento: <strong>"+$(this).attr("datos")+"</strong>?","(Esta acción no podrá ser revertida)");
-		// 	e.preventDefault();
-		// });
+		$("a#btn-borrarEstablecimiento").click(function(e) {
+			borrarMessageBox($(this),"<i class='fa fa-warning fa-lg txt-color-yellow'></i> <strong>¡ATENCIÓN!</strong> <br>¿Esta seguro que desea borrar el establecimiento: <strong>"+$(this).attr("datos")+"</strong>?","(Esta acción no podrá ser revertida)");
+			e.preventDefault();
+		});
 
 
 
@@ -126,17 +126,23 @@ EOT;
 			<strong><?php echo h($combo['Combo']['cantidad_personas']); ?></strong>
 		</h1>
 		</section>
-		<section class="col col-md-2">
-			<?php echo $this->html->link('Editar',array('controller'=>'combos','action'=>'editar',$combo['Combo']['id']),array('class'=>'btn btn-primary btn-lg'))?>
-		</section>
+		<div class="col-md-2">
+		<?php echo $this->Html->link('EDITAR ',array('controller'=>'ferias','action'=>'resumenGananciasFeria',$combo['Combo']['id'],1),array('class'=>'btn btn-info btn-lg btn-block','target'=>'_blank')); ?>
+		</div>
+		
 	</div>
 
 	<div class ="row">
-		<section class="col col-md-7">
+		<section class="col col-md-10">
 		<h3>Descripción:
 			<strong><?php echo h($combo['Combo']['descripcion']); ?></strong>
 		</h3>
 		</section>
+		<div class="col-md-2">
+		<?php
+			echo $this->Form->button('CALCULADORA', array('class'=>'btn btn-info btn-lg btn-block','data-toggle'=>'modal', 'data-target'=>'#modalCalculadoraCombo', 'id'=>'btn-calculadoraCombo'));
+		?>
+		</div>
 	</div>
 
 	<hr class="simple">
@@ -149,12 +155,12 @@ EOT;
 			<!-- NEW WIDGET START -->
 			<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<!-- Widget ID (each widget will need unique ID)-->
-				<div class="jarviswidget jarviswidget-color-green" id="nuevaComisionJarvis" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+				<div class="jarviswidget jarviswidget-color-green" id="nuevaComidaComboJarvis" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-fullscreenbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 					<header>
-						<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+						<span class="widget-icon"> <i class="fa fa-cutlery"></i> </span>
 						<h2 class="font-md">Comidas</h2>
 						<div class="widget-toolbar">
-							<button class="btn btn-sm btn-default" data-toggle="modal" data-target="#nuevaComision" id="btn-nuevaComision" data-backdrop="static">
+							<button class="btn btn-sm btn-default" data-toggle="modal" data-target="#nuevaComidaCombo" id="btn-nuevaComidaCombo" data-backdrop="static">
 								<i class="fa fa-plus">
 									Agregar comida al combo
 								</i>
@@ -168,26 +174,21 @@ EOT;
 							<table id="dt_comidas" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th>Tipo feria</th>
-										<th>Tipo cliente</th>
-										<th>Comision</th>
-										<th>Acciones</th>
+										<th width="80px">#</th>
+										<th width="600 ">Nombre</th>
+										<th>Proporción</th>
+										<th class="text-right">Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
-									<!-- <?php foreach ($cliente['Comision'] as $key => $dato) {
-											echo '<tr><td>'.$tipoFerias[$dato['tipo_feria_id']].'</td>';
-											echo '<td>'.$tipoClientes[$dato['tipo_cliente_id']].'</td>';
-											echo '<td>'.$dato['porcentaje_comision'].' %</td>';
-
-											echo '<td>'.$this->Form->button('<i class="fa fa-edit"></i> Editar',
-												array('type'=>'button', 'class'=>'btn btn-default btn-xs','escape'=>false,'data-toggle'=>'modal','data-target'=>'#editarComisionModal','backdrop'=>'static','id'=>'btn-editar','comision-id'=>$dato['id'],'tipo-feria'=>$tipoFerias[$dato['tipo_feria_id']],'tipo-cliente'=>$tipoClientes[$dato['tipo_cliente_id']],'porcentaje'=>$dato['porcentaje_comision'])).' ';
-
-											//Datos para cargar en el mensaje de confirmación de borrado de una comisión
-											$comisionDato = $tipoFerias[$dato['tipo_feria_id']].'-'.$tipoClientes[$dato['tipo_cliente_id']].': '.$dato['porcentaje_comision'].'%';
-											echo ' '.$this->Html->link('<i class="fa fa-trash-o"></i> Borrar',array('controller'=>'comisiones','action'=>'borrar',$dato['id']),array('id'=>'btn-borrarComision','class'=>'btn btn-default btn-xs','escape'=>false, 'datos'=>$comisionDato)).'</td>';
+									<?php foreach ($comidaCombo as $key => $comida) {
+											echo '<tr><td>'.$key.'</td>';
+											echo '<td>'.$comidas[$comida['ProductoCombos']['producto_id']].'</td>';
+											echo '<td>'.$comida['ProductoCombos']['cantidad_producto'].'</td>';
+											echo '<td class="text-right" width="250">'.$this->Form->button('<i class="fa fa-trash-o"></i> Eliminar',
+												array('type'=>'button', 'class'=>'btn btn-default btn-xs','escape'=>false,'data-toggle'=>'modal','data-target'=>'#editarEstablecimientoModal','backdrop'=>'static','id'=>'btn-editarEstablecimiento','establecimiento-id'=>$comida['ProductoCombos']['id'])).' ';
 										}
-									?> -->
+									?>
 								</tbody>
 							</table>
 						</div>
@@ -204,7 +205,7 @@ EOT;
 				<!-- Widget ID (each widget will need unique ID)-->
 				<div class="jarviswidget jarviswidget-color-green" id="nuevaBebidaComboJarvis" data-widget-editbutton="false"  data-widget-colorbutton="false"  data-widget-fullscreenbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 					<header>
-						<span class="widget-icon"> <i class="fa fa-building"></i> </span>
+						<span class="widget-icon"> <i class="fa fa-glass"></i> </span>
 						<h2 class="font-md">Bebidas</h2>
 						<div class="widget-toolbar">
 							<button class="btn btn-sm btn-default" data-toggle="modal" data-target="#nuevaBebidaCombo" id="btn-nuevaBebidaCombo" id="btn-nuevaBebidaCombo" data-backdrop="static">
@@ -221,10 +222,10 @@ EOT;
 							<table id="dt_bebidas" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th>#</th>
-										<th>Nombre</th>
+										<th width="80px">#</th>
+										<th width="600 ">Nombre</th>
 										<th>Proporción</th>
-										<th>Acciones</th>
+										<th class="text-right">Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -232,8 +233,7 @@ EOT;
 											echo '<tr><td>'.$key.'</td>';
 											echo '<td>'.$bebidas[$bebida['ProductoCombos']['producto_id']].'</td>';
 											echo '<td>'.$bebida['ProductoCombos']['cantidad_producto'].'</td>';
-											echo '<td>'.$this->Form->button('<i class="fa fa-edit"></i> Eliminar',
-												array('type'=>'button', 'class'=>'btn btn-default btn-xs','escape'=>false,'data-toggle'=>'modal','data-target'=>'#editarEstablecimientoModal','backdrop'=>'static','id'=>'btn-editarEstablecimiento','establecimiento-id'=>$bebida['ProductoCombos']['id'])).' ';
+											echo '<td>'.$this->Html->link('<i class="fa fa-trash-o"></i> Borrar',array('controller'=>'productoCombos','action'=>'borrar',$bebida['ProductoCombos']['id'],$combo['Combo']['id']),array('id'=>'btn-borrarBebida','class'=>'btn btn-default btn-xs','escape'=>false)).'</td>';
 										}
 									?>
 								</tbody>
@@ -255,7 +255,7 @@ EOT;
 <?php //MODALES ?>
 <?php echo '<div>'.$this->element('Modals/modalNuevaComidaCombo').'</div>';  ?>
 <?php echo '<div>'.$this->element('Modals/modalNuevaBebidaCombo').'</div>';  ?>
-<?php //echo '<div>'.$this->element('Modals/modalEditarEstablecimiento').'</div>'; ?>
+<?php echo '<div>'.$this->element('Modals/modalCalculadoraCombo').'</div>'; ?>
 <?php //echo '<div>'.$this->element('Modals/modalNuevaComision').'</div>'; ?>
 <?php //echo '<div>'.$this->element('Modals/modalNuevoCredito').'</div>'; ?>
 <?php //echo '<div>'.$this->element('Modals/modalEditarCredito').'</div>'; ?>
