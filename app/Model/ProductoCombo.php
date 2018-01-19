@@ -43,7 +43,7 @@ class ProductoCombo extends AppModel {
 		)
 	);
 
-	public $hasMany = array(
+	public $hasOne = array(
 		'Producto' => array(
 			'className' => 'Producto',
 			'foreignKey' => 'producto_id',
@@ -56,6 +56,16 @@ class ProductoCombo extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
+		),
+	);
+
+	public $belongsTo = array(
+		'Producto' => array(
+			'className' => 'Producto',
+			'foreignKey' => 'producto_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		),
 	);
 }

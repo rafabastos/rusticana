@@ -87,6 +87,76 @@ class CombosController extends AppController {
  * @return void
  */
 	public function detalles($id = null) {
+		if($this->request->is(array('ajax'))) {
+			$this->autoRender=false;
+			$query=$this->request->query;
+	        $modelo = 'ProductoCombos';
+	        $campos = array(
+					'id',
+					'cantidad_producto',
+					'producto_id',
+					'combo_id',
+					);
+	        $contiene = [
+			];
+	        $columnas = [
+				'ProductoCombos.id',
+	        	'ProductoCombos.cantidad_producto',
+	        	'ProductoCombos.producto_id',
+				'ProductoCombos.combo_id',
+			];
+	        $columnasBusqueda = [
+				'ProductoCombos.id',
+				'ProductoCombos.cantidad_producto',
+				'ProductoCombos.producto_id',
+				'ProductoCombos.combo_id',
+			];
+	        
+        	$condiciones=null;
+			$condiciones['ProductoCombos.combo_id'] = $id;
+
+	        $output = $this->Funciones->dtDataTable($query,$modelo,$campos,$contiene,$columnas,$condiciones,$columnasBusqueda);
+			
+			$combo = $this->Combo->find('first',array(
+				'conditions'=>array('id'=>$id),
+				'fields'=>array('id','nombre','cantidad_personas','descripcion'),
+				'recursive'=>-1
+			));
+			$cantidadInvitados = $combo['Combo']['cantidad_personas'];
+			if ($query['Calculadora']['cantidad'] != ""){
+				$cantidadInvitados = $query['Calculadora']['cantidad'];
+			}
+
+			$resultado['sEcho'] = $output['sEcho'];
+	        $resultado['iTotalRecords'] = $output['iTotalRecords'];
+	        $resultado['iTotalDisplayRecords'] = $output['iTotalDisplayRecords'];
+			$resultado['data']=[];
+			$view = new View($this);
+	        $html = $view->loadHelper('Html','Form');
+	        $i=0;
+	        $this->loadModel('Productos');
+			foreach ($output['aaData'][0] as $key => $producto) {
+				$resultado['data'][$key]['id']=$i;
+
+				$productoNombre = $this->Productos->find('first',array(
+					'conditions'=>array('id'=>$producto['ProductoCombos']['producto_id']),
+					'fields'=>'nombre',
+					'recursive'=>-1
+				));
+				$resultado['data'][$key]['nombre']=$productoNombre['Productos']['nombre'];
+				$resultado['data'][$key]['cantidad_invitados']=$cantidadInvitados;
+				
+				$totalNecesario = ($producto['ProductoCombos']['cantidad_producto']/$combo['Combo']['cantidad_personas'])*$cantidadInvitados;
+				$resultado['data'][$key]['total_necesario']=$totalNecesario;
+
+
+				$resultado['data'][$key]['tipo']='TOTAL';
+				$i++;
+			}
+		 return json_encode($resultado);
+		}
+
+
 		if (!$this->Combo->exists($id)) {
 			throw new NotFoundException(__('No encontrado'));
 		}

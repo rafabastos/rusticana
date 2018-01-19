@@ -22,32 +22,4 @@ class Producto extends AppModel {
 			),
 		),
 	);
-
-	public $belongsTo = array(
-		'TipoProducto' => array(
-			'className' => 'TipoProducto',
-			'foreignKey' => 'tipo_producto_id',
-			'conditions' => '',
-			'fields' => 'tipo',
-			'order' => ''
-		),
-	);
-
-	
-	public $hasMany = array(
-		'ProductoCombo' => array(
-			'className' => 'ProductoCombo',
-			// 'foreignKey' => 'combo_id',
-			// 'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-	);
-
 }
