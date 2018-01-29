@@ -11,7 +11,17 @@ class Producto extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'tipo' => array(
+		'nombre' => array(
+			'notBlank' => array(
+				'rule' => array('notBlank'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'tipo_producto_id' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
@@ -22,4 +32,5 @@ class Producto extends AppModel {
 			),
 		),
 	);
+
 }

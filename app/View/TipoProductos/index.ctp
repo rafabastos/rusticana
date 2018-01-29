@@ -11,7 +11,7 @@ $this->end();
 
 $this->Js->buffer($this->element('Js/TipoProductos/indexJs'));
 ?>
-<h1><i class="fa fa-lg fa-fw fa-cog"></i><?php echo __('Productos'); echo ' ' . $this->html->link('Nuevo',array('controller'=>'productos','action'=>'nuevo'),array('class'=>'btn btn-primary')); ?></h1>
+<h1><i class="fa fa-lg fa-fw fa-cog"></i><?php echo __('Tipos de Productos'); echo ' ' . $this->html->link('Nuevo',array('controller'=>'tipoProductos','action'=>'nuevo'),array('class'=>'btn btn-primary')); ?></h1>
 <div class="well" style="overflow-x:scroll;">
 	<table id="dt_productos" class="table table-striped table-bordered table-hover" style="overflow-x: scroll">
 

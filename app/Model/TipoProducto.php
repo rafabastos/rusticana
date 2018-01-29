@@ -23,20 +23,4 @@ class TipoProducto extends AppModel {
 		),
 	);
 
-	public $hasMany = array(
-		'Productos' => array(
-			'className' => 'Productos',
-			'foreignKey' => 'tipo_producto_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		),
-	);
-
 }

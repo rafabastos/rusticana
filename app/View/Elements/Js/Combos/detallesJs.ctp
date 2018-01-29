@@ -49,14 +49,14 @@ var breakpointDefinition = {
 		},
 	"bDeferRender": true,
 	"aoColumnDefs": [
-        { "sClass": "text-center", "aTargets": [0,1,2,3,4] }
+        { "sClass": "text-center", "aTargets": [0,1,2,3] }
     ],
 	"aoColumns":[
 		{'data':'id'},
 		{"data":"nombre"},
 		{"data":"cantidad_invitados"},
 		{"data":"total_necesario"},
-		{"data":"tipo"},
+		// {"data":"tipo"},
 	], 
 	"oLanguage": {
 		"sUrl": spanishURL,

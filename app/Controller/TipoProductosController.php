@@ -59,18 +59,14 @@ class TipoProductosController extends AppController {
 			$resultado['data']=[];
 			$view = new View($this);
 	        $html = $view->loadHelper('Html','Form');
-
+	        $indice = 1;
 			foreach ($output['aaData'][0] as $key => $cliente) {
-				$resultado['data'][$key]['id']=$cliente['TipoProducto']['id'];
+				$resultado['data'][$key]['id']=$indice;
 				$resultado['data'][$key]['tipo']=$cliente['TipoProducto']['tipo'];
 				$resultado['data'][$key]['descripcion']=$cliente['TipoProducto']['descripcion'];
-				$resultado['data'][$key]['acciones']= 'acciones';
-				// $view->Html->link(__('<i class="fa fa-list-ol"></i>'), array('action' => 'detalles', $cliente['Cliente']['id']),
-				// 	array('escape'=>false, 'class'=>'btn btn-default btn-xs','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Detalles')).
-				// 	$view->Html->link(__('<i class="fa fa-edit"></i>'), array('action' => 'editar', $cliente['Cliente']['id']),
-				// 		array('escape'=>false, 'class'=>'btn btn-default btn-xs','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Editar Cliente' )).
-				// 	$view->Html->link(__('<i class="fa fa-trash-o"></i>'), array('action' => 'borrar', $cliente['Cliente']['id']),
-				// 		array('escape'=>false,'class'=>'btn btn-default btn-xs','id'=>'btn-borrar','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Borrar Cliente' ));
+				$resultado['data'][$key]['acciones']= $view->Html->link(__('<i class="fa fa-trash-o"></i>'), array('action' => 'borrar', $cliente['TipoProducto']['id']),
+						array('escape'=>false,'class'=>'btn btn-default btn-xs','id'=>'btn-borrar','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Borrar Cliente' ));
+				$indice++;
 			}
 		 return json_encode($resultado);
 		}
@@ -121,63 +117,13 @@ class TipoProductosController extends AppController {
 //  * @return void
 //  */
 	public function borrar($id = null) {
-		$this->loadModel('Remate');
-		$this->loadModel('Programacion');
-		$this->loadModel('Establecimiento');
-		$this->loadModel('Comision');
-		$CausasParaNoBorrar=0;
-		$this->Cliente->id = $id;
-		if (!$this->Cliente->exists()) {
-			throw new NotFoundException(__('Invalid cliente'));
+		$this->TipoProducto->id = $id;
+		if (!$this->TipoProducto->exists()) {
+			throw new NotFoundException(__('Invalid tipo producto'));
 		}
-		/*Se verifica que el cliente a ser borrado no estÃ¡ asociado a algÃºn proceso  ya sea en programación o en 
-			remate*/
-		if($this->Programacion->find('count',array('conditions'=>array('Programacion.cliente_id'=>$id)))){
-			$CausasParaNoBorrar=1;
-		}else{
-			if($this->Remate->find('count',array('conditions'=>array('Remate.comprador_id'=>$id)))){
-			  $CausasParaNoBorrar=2;	
-			}else{
-				if($this->Establecimiento->find('count',array('conditions'=>array('Establecimiento.cliente_id'=>$id)))){
-				  $CausasParaNoBorrar=3;
-				}else{
-					if($this->Comision->find('count',array('conditions'=>array('Comision.cliente_id'=>$id)))){
-						$CausasParaNoBorrar=4;
-					}
-				}
-			}
-		 }
-		
+		$this->TipoProducto->delete();
+		return $this->redirect(array('action' => 'index'));
 
-		if($CausasParaNoBorrar==0){
-
-			if ($this->Cliente->delete()) {
-				$this->Session->setFlash('Cliente borrado.','Flash/success');
-			} else {
-				$this->Session->setFlash('El cliente no se pudo borrar. Favor intentar de nuevo.','Flash/error');
-			}
-		}else{
-			switch ($CausasParaNoBorrar) {
-				case 1:
-					$this->Session->setFlash('El cliente no se puede borrar porque tiene una programacion asociada','Flash/error');
-					break;
-				case 2:
-					$this->Session->setFlash('El cliente no se puede borrar porque tiene un remate asociado','Flash/error');
-					break;
-				case 3:
-					$this->Session->setFlash('El cliente no se puede borrar porque tiene un establecimiento asociado','Flash/error');
-					break;
-				case 4: 
-					$this->Session->setFlash('El cliente no se puede borrar porque tiene una comisión asociada','Flash/error');
-					break;				
-				default:
-					# code...
-					break;
-			}
-			
-
-		}
-		return $this->redirect($this->referer());
 	}
 
 }// END CLIENTES CONTROLLER

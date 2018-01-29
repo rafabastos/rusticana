@@ -66,7 +66,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#"> <i class="fa fa-lg fa-fw fa-cog"></i><span class="menu-item-parent">Productos</span></a>
+						<a href="#"> <i class="fa fa-lg fa-fw fa-cog"></i><span class="menu-item-parent">Tipos Productos</span></a>
 						<ul>
 							<li class="">
 								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'tipoProductos','action'=>'index'],['escape'=>false]); ?>

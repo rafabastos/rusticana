@@ -98,7 +98,7 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 					<th>Nombre</th>
 					<th>Cantidad Personas</th>
 					<th>Total Necesario</th>
-					<th>Total</th>
+					<!-- <th>Total</th> -->
 				</tr>
 			</thead>
 			<tbody>

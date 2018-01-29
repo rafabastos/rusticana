@@ -40,32 +40,16 @@ class ProductoCombo extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		)
-	);
-
-	public $hasOne = array(
-		'Producto' => array(
-			'className' => 'Producto',
-			'foreignKey' => 'producto_id',
-			// 'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
 		),
-	);
-
-	public $belongsTo = array(
-		'Producto' => array(
-			'className' => 'Producto',
-			'foreignKey' => 'producto_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
+		'tipo_producto_id' => array(
+			'notBlank' => array(
+				'rule' => array('notBlank'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 		),
 	);
 }
