@@ -66,14 +66,30 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#"> <i class="fa fa-lg fa-fw fa-cog"></i><span class="menu-item-parent">Tipos Productos</span></a>
+						<a href="#"> <i class="fa fa-lg fa-fw fa-cog"></i><span class="menu-item-parent">Configuraciones</span></a>
 						<ul>
-							<li class="">
-								<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'tipoProductos','action'=>'index'],['escape'=>false]); ?>
+							<li>
+								<a href="#"><i class="fa fa-pencil"></i> <span class="menu-item-parent text-left">Tipos Productos</span></a>
+								<ul>
+									<li class="">
+										<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'tipoProductos','action'=>'index'],['escape'=>false]); ?>
+									</li>
+									<li class="">
+										<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'tipoProductos','action'=>'nuevo'],['escape'=>false]); ?>
+									</li>		
+								</ul>
 							</li>
-							<li class="">
-								<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'tipoProductos','action'=>'nuevo'],['escape'=>false]); ?>
-							</li>	
+							<li>
+								<a href="#"><i class="fa fa-leaf"></i> <span class="menu-item-parent text-left">Ingredientes</span></a>
+								<ul>
+									<li class="">
+										<?php echo $this->Html->link('<i class="fa fa-fw fa-list"></i> Lista', ['controller'=> 'ingredientes','action'=>'index'],['escape'=>false]); ?>
+									</li>
+									<li class="">
+										<?php echo $this->Html->link('<i class="fa fa-fw fa-plus"></i> Nuevo', ['controller'=> 'ingredientes','action'=>'nuevo'],['escape'=>false]); ?>
+									</li>
+								</ul>
+							</li>
 						</ul>
 					</li>
 				</ul>
