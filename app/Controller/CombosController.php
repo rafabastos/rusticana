@@ -68,10 +68,7 @@ class CombosController extends AppController {
 				$resultado['data'][$key]['nombre']=$producto['Combo']['nombre'];
 				$resultado['data'][$key]['descripcion']=$producto['Combo']['cantidad_personas'];
 				$resultado['data'][$key]['tipo']=$producto['Combo']['descripcion'];
-				$resultado['data'][$key]['acciones']=$view->Html->link(__('<i class="fa fa-list-ol"></i>'), array('action' => 'detalles', $producto['Combo']['id']),
-					array('escape'=>false, 'class'=>'btn btn-default btn-xs','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Detalles')).
-					// $view->Html->link(__('<i class="fa fa-edit"></i>'), array('action' => 'editar', $producto['Combo']['id']),
-					// 	array('escape'=>false, 'class'=>'btn btn-default btn-xs','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Editar Cliente' )).
+				$resultado['data'][$key]['acciones']=$view->Html->link(__('<i class="fa fa-list-ol"></i>'), array('action' => 'detalles', $producto['Combo']['id']),array('escape'=>false, 'class'=>'btn btn-default btn-xs','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Detalles')).
 					$view->Html->link(__('<i class="fa fa-trash-o"></i>'), array('action' => 'borrar', $producto['Combo']['id']),
 						array('escape'=>false,'class'=>'btn btn-default btn-xs','id'=>'btn-borrar','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Borrar Cliente' ));
 			}

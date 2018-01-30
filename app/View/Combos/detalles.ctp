@@ -68,11 +68,7 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 		<h1>Cantidad de Clientes:
 			<strong><?php echo h($combo['Combo']['cantidad_personas']); ?></strong>
 		</h1>
-		</section>
-<!-- 		<div class="col-md-2">
-		<?php echo $this->Html->link('EDITAR ',array('controller'=>'ferias','action'=>'resumenGananciasFeria',$combo['Combo']['id'],1),array('class'=>'btn btn-info btn-lg btn-block','target'=>'_blank')); ?>
-		</div> -->
-		
+		</section>		
 	</div>
 
 	<div class ="row">
@@ -81,11 +77,6 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 			<strong><?php echo h($combo['Combo']['descripcion']); ?></strong>
 		</h3>
 		</section>
-		<!-- <div class="col-md-2">
-		<?php
-			echo $this->Form->button('CALCULADORA', array('class'=>'btn btn-info btn-lg btn-block','data-toggle'=>'modal', 'data-target'=>'#modalCalculadoraCombo', 'id'=>'btn-calculadoraCombo'));
-		?>
-		</div> -->
 	</div>
 
 	<hr class="simple">
@@ -98,7 +89,6 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 					<th>Nombre</th>
 					<th>Cantidad Personas</th>
 					<th>Total Necesario</th>
-					<!-- <th>Total</th> -->
 				</tr>
 			</thead>
 			<tbody>

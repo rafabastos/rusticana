@@ -76,7 +76,8 @@ class ProductosController extends AppController {
 				));
 				$resultado['data'][$key]['tipo']=$tipoProducto['TipoProducto']['tipo'];
 
-				$resultado['data'][$key]['acciones']= $view->Html->link('<i class="fa fa-trash-o fa-lg"></i>',['controller'=>'productos','action'=>'borrar',$producto['Producto']['id']],['class'=>"btn btn-default btn-xs",'rel'=>"tooltip",'data-placement'=>"top",'data-original-title'=>"Borrar Cliente",'escape'=>false]);
+				$resultado['data'][$key]['acciones']= $view->Html->link(__('<i class="fa fa-list-ol"></i>'), array('action' => 'detalles', $producto['Producto']['id']), array('escape'=>false, 'class'=>'btn btn-default btn-xs','rel'=>'tooltip', 'data-placement'=>'top', 'data-original-title'=>'Detalles')).
+				$view->Html->link('<i class="fa fa-trash-o fa-lg"></i>',['controller'=>'productos','action'=>'borrar',$producto['Producto']['id']],['class'=>"btn btn-default btn-xs",'rel'=>"tooltip",'data-placement'=>"top",'data-original-title'=>"Borrar Cliente",'escape'=>false]);
 				$indice++;
 			}
 		 return json_encode($resultado);
@@ -91,41 +92,38 @@ class ProductosController extends AppController {
  * @return void
  */
 	public function detalles($id = null) {
-		if (!$this->Cliente->exists($id)) {
+		if (!$this->Producto->exists($id)) {
 			throw new NotFoundException(__('No encontrado'));
 		}
 
-		$options = array('conditions' => array('Cliente.' . $this->Cliente->primaryKey => $id));
-		$cliente = $this->Cliente->find('first', $options);
-		
-		$this->loadModel('Credito');
-		$creditos = $this->Credito->find('all',array(
-			'conditions'=>array(
-				'Credito.cliente_id'=>$id,
-			),
-			'recursive' => -1
-		));	
+		$producto = $this->Producto->find('first',array(
+			'conditions'=>array('id'=>$id),
+			'fields'=>array('id','nombre','tipo_producto_id','descripcion'),
+			'recursive'=>-1
+		));
 
-		// $cliente = $this->Cliente->id=$id;
+		$this->loadModel('Ingrediente');
+		$lista_ingredientes = $this->Ingrediente->find('all');
+		$ingredientes = array();
 
-		// $facturas=$this->Factura->find('all',array('conditions'=>'Factura.cliente_id= $cliente'));
-
-		//Para que el formulario de ESTABLECIMIENTOS sea publado con las opciones
-		//correctas se debe extraer los datos relacionados al cliente
-		$clientes = array($cliente['Cliente']['id'] => $cliente['Cliente']['razon_social']);
-		$paises = $this->Cliente->Establecimiento->Pais->find('list');
-		$cdepartamentos = $this->Cliente->Establecimiento->Departamento->find('list');
-		$cciudades = $this->Cliente->Establecimiento->Ciudad->find('list');
-		$clocalidades = $this->Cliente->Establecimiento->Localidad->find('list');
-		$tipoFerias = $this->Cliente->Comision->TipoFeria->find('list');
-		$tiposDeCliente = array();
-		foreach ($cliente['TipoCliente'] as $value) {
-			if($value['id'] != PROVEEDOR) // Se restringe la comisión solamente al tipo COMPRADOR Y VENDEDOR
-				$tiposDeCliente[] = $value['id'];
+		//se genera el listado de ingredientes para seleccion en el modal
+		foreach ($lista_ingredientes as $key => $value) {
+			$ingredientes[$value['Ingrediente']['id']] = $value['Ingrediente']['nombre'].' ('.$value['Ingrediente']['unidade_medida'].')';
 		}
 
-		$tipoClientes = $this->Cliente->Comision->TipoCliente->find('list',array('conditions'=>array('TipoCliente.id'=>$tiposDeCliente)));
-		$this->set(compact('cliente','creditos','clientes', 'paises', 'cdepartamentos', 'cciudades', 'clocalidades','tipoFerias','tipoClientes'));
+		$this->loadModel('IngredienteProducto');
+		$ingredientes_productos = $this->IngredienteProducto->find('all');
+
+		//genera el array con los datos de los ingredientes ya cargados en el producto
+		foreach ($ingredientes_productos as $key => $value) {
+			$ingredientes_productos[$key]['Ingrediente'] = $this->Ingrediente->find('first',array(
+				'conditions'=>array('id'=>$value['IngredienteProducto']['ingrediente_id']),
+				'recursive'=>-1
+			));
+		}
+
+		$this->set(compact('producto','ingredientes','ingredientes_productos'));
+
 
 	}
 
