@@ -208,6 +208,181 @@ class CombosController extends AppController {
 		}
 	}
 
+
+
+	public function resumenGananciasFeria($id = null,$imprimir=null) {
+
+		$this->autoRender=false;
+		
+		$dir = TMP; 
+        $fechaHoraActual = time();
+        foreach (scandir($dir) as $archivo) {
+            if ($archivo == '.' || $archivo == '..') continue;
+            if(is_file($dir.$archivo)){
+                if($fechaHoraActual - filemtime($dir.$archivo) >= 1){
+                    unlink($dir.$archivo);
+                }
+            }
+        }     
+        $layoutTitle = 'Resumen_Ganancias_Feria';       
+        $pathFileTex=$dir.'Resumen_Ganancias_Feria'.'codigo'.'.tex';
+        $pathFilePdf=$dir.'Resumen_Ganancias_Feria'.'codigo'.'.pdf';
+        $this->set(compact('feria','lotes','salidas'));
+
+
+    	/* Inicio del Documento */
+        /*Armado de las Caracteristicas del pdf*/
+ 		$latexDocument=
+            '            
+            \documentclass[landscape, 12pt]{report}
+            \textwidth = 740pt
+            \textheight = 500pt
+            \topmargin = -30pt
+            \oddsidemargin = -50pt 
+            \usepackage{pdflscape}
+            \usepackage[utf8]{inputenc}
+            \usepackage{longtable}
+            \usepackage{tabu}
+            \usepackage{xcolor,colortbl}
+            \usepackage{fancyhdr}
+            \pagestyle{fancy}
+            \fancyhf{}
+            \fancyhead[R]{\thepage}
+            \fancyhead[L]{BPCUARIA S.A}
+            \fancyhead[C]{Resumen de Ganancias Feria N: '.'codigo'.'}
+            \begin{document}
+            \newcommand\tab[1][0.5cm]{\hspace*{#1}}
+        ';
+        
+        /*Fin de Armado de las Caracteristicas del pdf*/
+        $latexDocument.='
+			\begin{center}
+			\normalsize{MOVIMIENTO DE ANIMALES}
+			\end{center}	
+			\scriptsize 
+			\tabulinesep=1.2mm 
+			\begin{longtabu} to 
+			\textwidth {
+				X[0.3,l]
+				X[0.6,l]
+				X[0.9,l]
+				X[0.7,l]
+				X[0.8,l]
+				X[0.8,l]
+				X[0.8,l]
+				X[0.8,l]
+				X[1,l]
+				X[1,l]
+				X[1,l]
+			}
+            \caption*{Feria:'.'nombre'.'\tab  Feria de Fecha:'.'fecha'.'\tab Tipo de Feria:'.'tipo'.' }\\\\
+		    \hline \hline
+		    \textbf{Lote} & 
+		    \textbf{Cantidad} & 
+            \textbf{Valor Remate} & 
+            \textbf{Descuentos}& 
+            \textbf{Comision Comprador}&
+            \textbf{Comision Vendedor}& 
+            \textbf{Interés Cheque}&
+            \textbf{Interés Bancario}&
+            \textbf{Comprador}&
+            \textbf{Vendedor}&
+            \textbf{Cobro}\\
+            \hline \hline
+            \endfirsthead
+            \multicolumn{4}{c}%
+            {-- \textit{Continuación de la página anterior} }\\
+            \hline
+            \hline
+            \textbf{Lote} & 
+            \textbf{Cantidad} & 
+		    \textbf{Valor Remate} & 
+            \textbf{Descuentos}& 
+            \textbf{Comision Comprador}&
+            \textbf{Comision Vendedor}& 
+            \textbf{Interés Chequex}&
+            \textbf{Interés Bancario}&
+            \textbf{Comprador}&
+            \textbf{Vendedor}&
+            \textbf{Cobro}\\
+            \hline
+            \endhead
+            \hline \multicolumn{4}{r}{\textit{Continua en la siguiente página}} \\
+            \endfoot
+            \hline
+            \endlastfoot
+            \bottomrule\end{longtabu}
+            \tabulinesep=1.2mm
+            \begin{longtabu} to 
+     		\textwidth {
+					X[0.5,l]
+					X[0.6,l]
+				X[0.9,l]
+				X[0.7,l]
+				X[0.8,l]
+				X[0.9,l]
+				X[0.8,l]
+				X[0.7,l]
+				X[1,l]
+				X[1,l]
+				X[1,l]
+ 	        }             	        
+        ';
+           
+        /*Armado de las filas de la tabla*/
+        // if(empty($lotes)){
+        //        $latexDocument.='No hay datos para mostrar';
+        // }
+
+        //suma de los montos del reporte
+        $total_remate = 0;
+        $total_cantidad = 0;
+        $total_peso = 0;
+        $total_descuentos = 0;
+        $total_comision_vendedor = 0;
+        $total_comision_comprador = 0;
+        $total_interes = 0;
+        $total_bancario = 0;
+
+
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.=''.'Bla bla bla'.'&';
+        $latexDocument.='\\\\ ';
+
+		$latexDocument.='\hline';
+		$latexDocument.='\multicolumn6{ r}{TOTALES } & \\\\ \hline';
+		$latexDocument.=''.'&'.'Cantidad'.'&'.'Valor Remate'.'&'.'Descuentos'.'&'.'Comision Comprador'.'&'.'Comision Vendedor'.'&'.'Interés Cheque'.'&'.'Interés Banco'.' \\\\ \hline'; 
+		$latexDocument.=''.'&'.number_format($total_cantidad,0,',','.').'&'.number_format($total_remate,0,',','.').'&'.number_format($total_descuentos,0,',','.').'&'.number_format($total_comision_comprador,0,',','.').'&'.number_format($total_comision_vendedor,0,',','.').'&'.number_format($total_interes,0,',','.').'&'.number_format($total_bancario,0,',','.').' \\\\ \hline'; 
+		$latexDocument.= '\bottomrule\end{longtabu}';
+
+	
+       	$latexDocument.='
+        	\end{document}
+        ';
+
+        $myfile = fopen($pathFileTex, "w") or die("Unable to open file!");
+        fwrite($myfile,$latexDocument);
+        fclose($myfile);
+        
+        exec ("pdflatex --interaction batchmode -output-directory=".TMP."  ".$pathFileTex);
+        $this->response->file($pathFilePdf);
+
+        return $this->response;
+
+	        
+	}
+
+
+
 	public function editar($id = null) {
 		if (!$this->Cliente->exists($id)) {
 			throw new NotFoundException(__('Cliente a ser editado no existe'));

@@ -25,6 +25,9 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 			Detalles del Combo
 		</h1>
 	</div>
+	<div class="col-md-3">
+	<?php echo $this->Html->link('IMPRIMIR PDF',array('controller'=>'combos','action'=>'resumenGananciasFeria'),array('class'=>'btn btn-info btn-lg btn-block','target'=>'_blank')); ?>
+	</div>
 </div>
 
 <?php
