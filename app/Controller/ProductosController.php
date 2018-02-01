@@ -36,7 +36,8 @@ class ProductosController extends AppController {
 					'id',
 					'nombre',
 					'descripcion',
-					'tipo_producto_id'
+					'tipo_producto_id',
+					'unidade_medida'
 					);
 	        $contiene = [
 			];
@@ -44,13 +45,15 @@ class ProductosController extends AppController {
 				'Producto.id',
 	        	'Producto.nombre',
 	        	'Producto.descripcion',
-	        	'Producto.tipo_producto_id'
+	        	'Producto.tipo_producto_id',
+	        	'Producto.unidade_medida'
 			];
 	        $columnasBusqueda = [
 				'Producto.id',
 				'Producto.nombre',
 				'Producto.descripcion',
-				'Producto.tipo_producto_id'
+				'Producto.tipo_producto_id',
+				'Producto.unidade_medida'
 			];
 	        
         	$condiciones=null;
@@ -67,6 +70,7 @@ class ProductosController extends AppController {
 			foreach ($output['aaData'][0] as $key => $producto) {
 				$resultado['data'][$key]['id']=$indice;
 				$resultado['data'][$key]['nombre']=$producto['Producto']['nombre'];
+				$resultado['data'][$key]['unidade_medida']=$producto['Producto']['unidade_medida'];
 				$resultado['data'][$key]['descripcion']=$producto['Producto']['descripcion'];
 
 				$tipoProducto = $this->TipoProducto->find('first',array(
@@ -98,7 +102,7 @@ class ProductosController extends AppController {
 
 		$producto = $this->Producto->find('first',array(
 			'conditions'=>array('id'=>$id),
-			'fields'=>array('id','nombre','tipo_producto_id','descripcion'),
+			'fields'=>array('id','nombre','tipo_producto_id','descripcion','unidade_medida'),
 			'recursive'=>-1
 		));
 

@@ -31,9 +31,14 @@ $this->Js->buffer($this->element('Js/Productos/detallesJs'));
 	
 	<div class = "row">
 		<section class="col col-md-3">
-		<h1>Nombre:
+		<h2>Nombre:
 			<strong><?php echo h($producto['Producto']['nombre']); ?></strong>
-		</h1>
+		</h2>
+		</section>
+		<section class="col col-md-3">
+		<h3>Medida:
+			<strong><?php echo h($producto['Producto']['unidade_medida']); ?></strong>
+		</h3>
 		</section>
 	</div>
 	<div class ="row">
@@ -77,11 +82,11 @@ $this->Js->buffer($this->element('Js/Productos/detallesJs'));
 							<table id="dt_comidas" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th width="80px">#</th>
+										<th width="40px">#</th>
 										<th>Nombre</th>
 										<th>Cantidad</th>
 										<th>Medida</th>
-										<th class="text-right">Acciones</th>
+										<th width="80px" class="text-right">Acciones</th>
 									</tr>
 								</thead>
 								<tbody>

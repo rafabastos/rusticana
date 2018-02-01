@@ -17,11 +17,12 @@ $this->Js->buffer($this->element('Js/Productos/indexJs'));
 
 	<thead>
 	<tr>
-			<th>#</th>
+			<th width="40px">#</th>
 			<th>Nombre</th>
+			<th>Medida</th>
 			<th>Descripcion</th>
 			<th>Tipo</th>
-			<th>Acciones</th>
+			<th width="80px">Acciones</th>
 	</tr>
 	</thead>
 	<tbody>

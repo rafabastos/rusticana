@@ -96,7 +96,7 @@ EOT;
 						<?php echo $this->Form->hidden('tipo_producto_id', array('value'=>1)); ?>
 						<div class="row">
 							<section class="col col-md-12">
-								<label class="label">Proporción (de acuerdo a la cantidad de personas del combo)</label>
+								<label class="label">Cantidad (de acuerdo a la cantidad de personas del combo)</label>
 								<label class="input">
 									<?php	echo $this->Form->input('proporcion',array('placeholder'=>'Proporción','type'=>'number'));?>
 								</label>

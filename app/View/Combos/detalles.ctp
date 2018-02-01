@@ -120,10 +120,10 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 							<table id="dt_comidas" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th width="80px">#</th>
-										<th width="600 ">Nombre</th>
-										<th>Proporción</th>
-										<th class="text-right">Acciones</th>
+										<th width="50px">#</th>
+										<th>Nombre</th>
+										<th>Cantidad</th>
+										<th width="150" class="text-right">Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -137,6 +137,7 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 								</tbody>
 							</table>
 						</div>
+
 						<!-- end widget content -->
 					</div>
 					<!-- end widget div -->
@@ -167,10 +168,10 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 							<table id="dt_bebidas" class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th width="80px">#</th>
-										<th width="600 ">Nombre</th>
-										<th>Proporción</th>
-										<th class="text-right">Acciones</th>
+										<th width="50px">#</th>
+										<th>Nombre</th>
+										<th>Cantidad</th>
+										<th width="150" class="text-right">Acciones</th>
 									</tr>
 								</thead>
 								<tbody>

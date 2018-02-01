@@ -170,10 +170,10 @@ class CombosController extends AppController {
 		$bebidas = array();
 		foreach ($productos as $key => $producto) {
 			if ($producto['Productos']['tipo_producto_id'] == 1){
-				$bebidas[$producto['Productos']['id']] = $producto['Productos']['nombre'];
+				$bebidas[$producto['Productos']['id']] = $producto['Productos']['nombre'].' ('.$producto['Productos']['unidade_medida'].')';
 			}
 			if ($producto['Productos']['tipo_producto_id'] == 2){
-				$comidas[$producto['Productos']['id']] = $producto['Productos']['nombre'];
+				$comidas[$producto['Productos']['id']] = $producto['Productos']['nombre'].' ('.$producto['Productos']['unidade_medida'].')';
 			}
 		}
 

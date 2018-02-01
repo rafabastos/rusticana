@@ -51,6 +51,7 @@ var breakpointDefinition = {
 	"aoColumns":[
 		{'data':'id'},
 		{"data":"nombre"},
+		{"data":"unidade_medida"},
 		{"data":"descripcion"},
 		{"data":"tipo"},
 		{"data":"acciones","bSortable":false,'bSearchable':false}
