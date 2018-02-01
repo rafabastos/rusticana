@@ -210,7 +210,7 @@ class CombosController extends AppController {
 
 
 
-	public function resumenGananciasFeria($id = null,$imprimir=null) {
+	public function ingredientesComboPDF($comboId = null,$cantidad=null) {
 
 		$this->autoRender=false;
 		
@@ -224,10 +224,9 @@ class CombosController extends AppController {
                 }
             }
         }     
-        $layoutTitle = 'Resumen_Ganancias_Feria';       
-        $pathFileTex=$dir.'Resumen_Ganancias_Feria'.'codigo'.'.tex';
-        $pathFilePdf=$dir.'Resumen_Ganancias_Feria'.'codigo'.'.pdf';
-        $this->set(compact('feria','lotes','salidas'));
+        $layoutTitle = 'Lista_ingredientes_combo';       
+        $pathFileTex=$dir.'Lista_ingredientes_combo'.'combo'.'.tex';
+        $pathFilePdf=$dir.'Lista_ingredientes_combo'.'combo'.'.pdf';
 
 
     	/* Inicio del Documento */

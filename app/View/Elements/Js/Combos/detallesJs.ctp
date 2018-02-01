@@ -1,6 +1,9 @@
 var spanishURL = <?php echo "'{$this->html->url('/js/plugin/datatables/Spanish.json')}';" ?>
 var getCombosUrl= <?php echo "'{$this->html->url(array('controller'=>'combos','action'=>'detalles'))}';" ?>;
 var comboId ="<?php echo $combo['Combo']['id'];?>";
+var getListaPDF = <?php echo "'".$this->Html->url(array('controller' => 'combos', 'action' => 'ingredientesComboPDF'))."'"?>;
+
+$('#btnExportarPDF').attr('href',getListaPDF+'/'+comboId+'/'+$('#cantidad').val());
 
 $("a#btn-borrar").click(function(e) {
 	var btnBorrar = $(this);

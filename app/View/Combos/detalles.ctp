@@ -25,9 +25,6 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 			Detalles del Combo
 		</h1>
 	</div>
-	<div class="col-md-3">
-	<?php echo $this->Html->link('IMPRIMIR PDF',array('controller'=>'combos','action'=>'resumenGananciasFeria'),array('class'=>'btn btn-info btn-lg btn-block','target'=>'_blank')); ?>
-	</div>
 </div>
 
 <?php
@@ -50,9 +47,13 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 					<?php	echo $this->Form->input('cantidad',array('placeholder'=>'Informe aqui la cantidad','type'=>'number','id'=>'cantidad'));?>
 				</label>
 			</section>
-			<section class="col col-md-2">
+			<section class="col col-md-1">
 				<label class="label">&nbsp;</label>
-				<?php echo $this->Form->button('<i class="fa fa-search fa-md"></i>&nbsp;&nbsp;CALCULAR',array('type'=>'submit','id'=>'buscarDocumentos', 'class'=>'btn btn-info btn-sm')); ?>
+				<?php echo $this->Form->button('&nbsp;&nbsp;CALCULAR',array('type'=>'submit','id'=>'buscarDocumentos', 'class'=>'btn btn-info btn-sm')); ?>
+			</section>
+			<section class="col col-md-3">
+				<label class="label">&nbsp;</label>
+				<?php echo $this->Html->link('GENERAR LISTA DE COMPRAS',array('controller'=>'combos','action'=>'resumenGananciasFeria'),array('class'=>'btn btn-info btn-sm btn-block','target'=>'_blank','id'=>'btnExportarPDF')); ?>
 			</section>
 		</div>
 	</fieldset>
@@ -205,9 +206,4 @@ $this->Js->buffer($this->element('Js/Combos/detallesJs'));
 <?php //MODALES ?>
 <?php echo '<div>'.$this->element('Modals/modalNuevaComidaCombo').'</div>';  ?>
 <?php echo '<div>'.$this->element('Modals/modalNuevaBebidaCombo').'</div>';  ?>
-<?php echo '<div>'.$this->element('Modals/modalCalculadoraCombo').'</div>'; ?>
-<?php //echo '<div>'.$this->element('Modals/modalNuevaComision').'</div>'; ?>
-<?php //echo '<div>'.$this->element('Modals/modalNuevoCredito').'</div>'; ?>
-<?php //echo '<div>'.$this->element('Modals/modalEditarCredito').'</div>'; ?>
-<?php //echo '<div>'.$this->element('Modals/modalEditarComision').'</div>'; ?>
 <?php //END MODALES ?>
