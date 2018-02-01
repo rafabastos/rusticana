@@ -228,6 +228,43 @@ class CombosController extends AppController {
         $pathFileTex=$dir.'Lista_ingredientes_combo'.'combo'.'.tex';
         $pathFilePdf=$dir.'Lista_ingredientes_combo'.'combo'.'.pdf';
 
+        //se busca los productos del combo
+        $this->loadModel('ProductoCombo');
+        $productos_combo = $this->ProductoCombo->find('all',array(
+        	'conditions'=>array('combo_id'=>$comboId,'tipo_producto_id'=>2),
+        	'fields'=>array('cantidad_producto','producto_id'),
+        	'recursive'=>-1
+        ));
+
+        $this->loadModel('Producto');
+        $this->loadModel('IngredienteProducto');
+        $this->loadModel('Ingrediente');
+
+        foreach ($productos_combo as $key => $value) {
+        	
+        	//se agrega informaciones del producto
+        	$producto = $this->Producto->find('first',array(
+        		'conditions'=>array('id'=>$value['ProductoCombo']['producto_id'])
+        	));
+        	$productos_combo[$key]['Producto'] = $producto['Producto'];
+
+        	//se agrega informaciones del ingrediente
+        	$ingrediente_producto = $this->IngredienteProducto->find('all',array(
+        		'conditions'=>array('producto_id'=>$value['ProductoCombo']['producto_id'])
+        	));
+        	foreach ($ingrediente_producto as $key2 => $value2) {
+        		$ingrediente = $this->Ingrediente->find('first',array(
+        			'conditions'=>array('id'=>$value2['IngredienteProducto']['ingrediente_id'])
+        		));
+        		$ingrediente_producto[$key2] = $ingrediente['Ingrediente'];
+        	}
+        	$productos_combo[$key]['Ingredientes'] = $ingrediente_producto;
+        }
+
+
+        debug($productos_combo);
+        die;
+
 
     	/* Inicio del Documento */
         /*Armado de las Caracteristicas del pdf*/

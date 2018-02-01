@@ -116,7 +116,9 @@ class ProductosController extends AppController {
 		}
 
 		$this->loadModel('IngredienteProducto');
-		$ingredientes_productos = $this->IngredienteProducto->find('all');
+		$ingredientes_productos = $this->IngredienteProducto->find('all',array(
+			'conditions'=>array('producto_id'=>$id)
+		));
 
 		//genera el array con los datos de los ingredientes ya cargados en el producto
 		foreach ($ingredientes_productos as $key => $value) {
