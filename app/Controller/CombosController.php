@@ -262,11 +262,10 @@ class CombosController extends AppController {
         }
 
         //ajusta la cantidad caso la cantidad de personas no sea el pre-definido
-
+    	$combo = $this->Combo->find('first',array(
+    		'conditions'=>array('id'=>$comboId)
+    	));
         if ($cantidad != null){
-        	$combo = $this->Combo->find('first',array(
-        		'conditions'=>array('id'=>$comboId)
-        	));
         	if ($cantidad != $combo['Combo']['cantidad_personas']){
         		foreach ($productos_combo as $key => $value) {
         			$totalNecesario = ($value['ProductoCombo']['cantidad_producto']/$combo['Combo']['cantidad_personas'])*$cantidad;
@@ -274,11 +273,9 @@ class CombosController extends AppController {
         		}
 
         	}
+        } else {
+        	$cantidad = $combo['Combo']['cantidad_personas'];	
         }
-        
-        // debug($productos_combo);
-        // die;
-
 
     	/* Inicio del Documento */
         /*Armado de las Caracteristicas del pdf*/
@@ -299,7 +296,7 @@ class CombosController extends AppController {
             \fancyhf{}
             \fancyhead[R]{\thepage}
             \fancyhead[L]{RUSTICANA JARDIM}
-            \fancyhead[C]{Lista de Compras}
+            \fancyhead[C]{'.$combo['Combo']['nombre'].' para '.$cantidad.' personas'.'}
             \begin{document}
             \newcommand\tab[1][0.5cm]{\hspace*{#1}}
         ';
@@ -309,9 +306,9 @@ class CombosController extends AppController {
 
         foreach ($productos_combo as $key => $producto_combo) {        
 	        $latexDocument.='
-            	\scriptsize
+            	\smallsize
             	Ingredientes para: '.$producto_combo['ProductoCombo']['cantidad_producto'].' '.$producto_combo['Producto']['nombre'].' ('.$producto_combo['Producto']['unidade_medida'].')
-            	\tabulinesep=1.2mm 
+            	\tabulinesep=1.0mm 
             	\begin{longtabu} to \textwidth {|X[1,l]|X[1,l]|X[1,l]|X[3,l]|}
                 \hline 
                 \textbf{Ingrediente}& \textbf{Cantidad} & \textbf{Medida} & \textbf{Observación}\\
@@ -344,10 +341,30 @@ class CombosController extends AppController {
 			$latexDocument.= '\bottomrule\end{longtabu}';
 
 		}
-
 		
+		//Resumen de ingresos por centros de distribución y cobros en local
+		$latexDocument.='\tabulinesep=1.2mm
+			\normalsize{CANTIDAD TOTAL}
+    		\begin{longtabu} to \textwidth {|X[1,l]|X[1,l]|X[1,l]|X[3,l]|}
+    		\hline\textbf{Ingrediente} & \textbf{Cantidad} & \textbf{Medida} & \textbf{Observación} \\\\
+        	\hline
+        	\endfirsthead
+        	\multicolumn{2}{c}
+        	{\textit{- Continuación de la página anterior} }
+        	\endhead
+        	\endfoot
+        	\endlastfoot
+        '; 
 
-			        // debug($totales_ingredientes);
+        foreach ($totales_ingredientes as $key => $total) {
+        	$latexDocument .= $total['nombre'].' & ';
+        	$latexDocument .= $total['cantidad'].' & ';
+        	$latexDocument .= $total['unidade_medida'].' & ';
+        	$latexDocument .= ' \\\\ \hline ';
+        }
+        	$latexDocument.= '\bottomrule\end{longtabu}';
+
+			        // debug($latexDocument);
            //      	die;
 
 
