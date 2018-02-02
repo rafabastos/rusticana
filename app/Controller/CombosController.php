@@ -240,8 +240,7 @@ class CombosController extends AppController {
         $this->loadModel('IngredienteProducto');
         $this->loadModel('Ingrediente');
 
-        foreach ($productos_combo as $key => $value) {
-        	
+        foreach ($productos_combo as $key => $value) {	
         	//se agrega informaciones del producto
         	$producto = $this->Producto->find('first',array(
         		'conditions'=>array('id'=>$value['ProductoCombo']['producto_id'])
@@ -257,13 +256,28 @@ class CombosController extends AppController {
         			'conditions'=>array('id'=>$value2['IngredienteProducto']['ingrediente_id'])
         		));
         		$ingrediente_producto[$key2] = $ingrediente['Ingrediente'];
+        		$ingrediente_producto[$key2]['cantidad'] = $value2['IngredienteProducto']['cantidad'];
         	}
         	$productos_combo[$key]['Ingredientes'] = $ingrediente_producto;
         }
 
+        //ajusta la cantidad caso la cantidad de personas no sea el pre-definido
 
-        debug($productos_combo);
-        die;
+        if ($cantidad != null){
+        	$combo = $this->Combo->find('first',array(
+        		'conditions'=>array('id'=>$comboId)
+        	));
+        	if ($cantidad != $combo['Combo']['cantidad_personas']){
+        		foreach ($productos_combo as $key => $value) {
+        			$totalNecesario = ($value['ProductoCombo']['cantidad_producto']/$combo['Combo']['cantidad_personas'])*$cantidad;
+					$productos_combo[$key]['ProductoCombo']['cantidad_producto']=$totalNecesario;
+        		}
+
+        	}
+        }
+        
+        // debug($productos_combo);
+        // die;
 
 
     	/* Inicio del Documento */
@@ -284,126 +298,66 @@ class CombosController extends AppController {
             \pagestyle{fancy}
             \fancyhf{}
             \fancyhead[R]{\thepage}
-            \fancyhead[L]{BPCUARIA S.A}
-            \fancyhead[C]{Resumen de Ganancias Feria N: '.'codigo'.'}
+            \fancyhead[L]{RUSTICANA JARDIM}
+            \fancyhead[C]{Lista de Compras}
             \begin{document}
             \newcommand\tab[1][0.5cm]{\hspace*{#1}}
         ';
-        
         /*Fin de Armado de las Caracteristicas del pdf*/
-        $latexDocument.='
-			\begin{center}
-			\normalsize{MOVIMIENTO DE ANIMALES}
-			\end{center}	
-			\scriptsize 
-			\tabulinesep=1.2mm 
-			\begin{longtabu} to 
-			\textwidth {
-				X[0.3,l]
-				X[0.6,l]
-				X[0.9,l]
-				X[0.7,l]
-				X[0.8,l]
-				X[0.8,l]
-				X[0.8,l]
-				X[0.8,l]
-				X[1,l]
-				X[1,l]
-				X[1,l]
-			}
-            \caption*{Feria:'.'nombre'.'\tab  Feria de Fecha:'.'fecha'.'\tab Tipo de Feria:'.'tipo'.' }\\\\
-		    \hline \hline
-		    \textbf{Lote} & 
-		    \textbf{Cantidad} & 
-            \textbf{Valor Remate} & 
-            \textbf{Descuentos}& 
-            \textbf{Comision Comprador}&
-            \textbf{Comision Vendedor}& 
-            \textbf{Interés Cheque}&
-            \textbf{Interés Bancario}&
-            \textbf{Comprador}&
-            \textbf{Vendedor}&
-            \textbf{Cobro}\\
-            \hline \hline
-            \endfirsthead
-            \multicolumn{4}{c}%
-            {-- \textit{Continuación de la página anterior} }\\
-            \hline
-            \hline
-            \textbf{Lote} & 
-            \textbf{Cantidad} & 
-		    \textbf{Valor Remate} & 
-            \textbf{Descuentos}& 
-            \textbf{Comision Comprador}&
-            \textbf{Comision Vendedor}& 
-            \textbf{Interés Chequex}&
-            \textbf{Interés Bancario}&
-            \textbf{Comprador}&
-            \textbf{Vendedor}&
-            \textbf{Cobro}\\
-            \hline
-            \endhead
-            \hline \multicolumn{4}{r}{\textit{Continua en la siguiente página}} \\
-            \endfoot
-            \hline
-            \endlastfoot
-            \bottomrule\end{longtabu}
-            \tabulinesep=1.2mm
-            \begin{longtabu} to 
-     		\textwidth {
-					X[0.5,l]
-					X[0.6,l]
-				X[0.9,l]
-				X[0.7,l]
-				X[0.8,l]
-				X[0.9,l]
-				X[0.8,l]
-				X[0.7,l]
-				X[1,l]
-				X[1,l]
-				X[1,l]
- 	        }             	        
-        ';
-           
-        /*Armado de las filas de la tabla*/
-        // if(empty($lotes)){
-        //        $latexDocument.='No hay datos para mostrar';
-        // }
+		
+		$totales_ingredientes = array();	        
 
-        //suma de los montos del reporte
-        $total_remate = 0;
-        $total_cantidad = 0;
-        $total_peso = 0;
-        $total_descuentos = 0;
-        $total_comision_vendedor = 0;
-        $total_comision_comprador = 0;
-        $total_interes = 0;
-        $total_bancario = 0;
+        foreach ($productos_combo as $key => $producto_combo) {        
+	        $latexDocument.='
+            	\scriptsize
+            	Ingredientes para: '.$producto_combo['ProductoCombo']['cantidad_producto'].' '.$producto_combo['Producto']['nombre'].' ('.$producto_combo['Producto']['unidade_medida'].')
+            	\tabulinesep=1.2mm 
+            	\begin{longtabu} to \textwidth {|X[1,l]|X[1,l]|X[1,l]|X[3,l]|}
+                \hline 
+                \textbf{Ingrediente}& \textbf{Cantidad} & \textbf{Medida} & \textbf{Observación}\\
+                \hline 
+                \endfirsthead
+                \hline
+                \endhead
+                \hline \multicolumn{4}{r}{\textit{Continua en la siguiente página}}
+                \endfoot
+                \endlastfoot
+                 ';
+
+                foreach ($producto_combo['Ingredientes'] as $key => $ingrediente) {
+			        $latexDocument.=''.$ingrediente['nombre'].'&';
+			        $latexDocument.=''.$producto_combo['ProductoCombo']['cantidad_producto']*$ingrediente['cantidad'].'&';
+			        $latexDocument.=''.$ingrediente['unidade_medida'].'&';
+			        $latexDocument.='\\\\ ';
+			        $latexDocument.='\cline{1-4}';
+
+			        //carga el array con el total de los ingredientes
+			        if (!isset($totales_ingredientes[$ingrediente['id']])){
+			        	$totales_ingredientes[$ingrediente['id']] = $ingrediente;
+			        	$totales_ingredientes[$ingrediente['id']]['cantidad'] = $producto_combo['ProductoCombo']['cantidad_producto']*$ingrediente['cantidad'];
+			        } else {
+			        	$totales_ingredientes[$ingrediente['id']]['cantidad'] += $producto_combo['ProductoCombo']['cantidad_producto']*$ingrediente['cantidad'];
+			        }
+                }
+
+			$latexDocument.='\hline';
+			$latexDocument.= '\bottomrule\end{longtabu}';
+
+		}
+
+		
+
+			        // debug($totales_ingredientes);
+           //      	die;
 
 
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.=''.'Bla bla bla'.'&';
-        $latexDocument.='\\\\ ';
-
-		$latexDocument.='\hline';
-		$latexDocument.='\multicolumn6{ r}{TOTALES } & \\\\ \hline';
-		$latexDocument.=''.'&'.'Cantidad'.'&'.'Valor Remate'.'&'.'Descuentos'.'&'.'Comision Comprador'.'&'.'Comision Vendedor'.'&'.'Interés Cheque'.'&'.'Interés Banco'.' \\\\ \hline'; 
-		$latexDocument.=''.'&'.number_format($total_cantidad,0,',','.').'&'.number_format($total_remate,0,',','.').'&'.number_format($total_descuentos,0,',','.').'&'.number_format($total_comision_comprador,0,',','.').'&'.number_format($total_comision_vendedor,0,',','.').'&'.number_format($total_interes,0,',','.').'&'.number_format($total_bancario,0,',','.').' \\\\ \hline'; 
-		$latexDocument.= '\bottomrule\end{longtabu}';
 
 	
        	$latexDocument.='
         	\end{document}
         ';
+
+
 
         $myfile = fopen($pathFileTex, "w") or die("Unable to open file!");
         fwrite($myfile,$latexDocument);
